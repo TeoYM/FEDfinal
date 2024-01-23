@@ -1,0 +1,11 @@
+.image-con{
+    display: flex;
+    justify-content: center;
+  }
+.flex-con{
+    display: flex;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    font-size: 24px;
+    margin: 5px;
+  }
