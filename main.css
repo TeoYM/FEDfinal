@@ -23,6 +23,7 @@
   border: 1px solid black;
   font-size: 24px;
   margin: 5px;
+  flex-wrap: nowrap;
 }
 .trending-con{
   display: flex;
