@@ -1,34 +1,39 @@
 <!DOCTYPE html>
-<html lang ="en">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <head>
-        <title>login page</title>
-        <link rel = "stylesheet" href = "main.css" type = "text/css">
-    </head>
-    <div class = "center-con">
-        <a class = "flex-image"><img src = "FED/logo.png"></a>
-    </div>
-    <form>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email or Username</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email/username">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-      </div>
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Show Password</label>
-      </div>
-      <div class = "sub-button">
-        <button type="submit" class="btn btn-primary">Log in</button>
-      </div>
-      <div class = "options">
-        <li>Forget Username / Password</li>
-        <li>Don't have an account? Sign up</li>
-      </div>
-    </form>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel = "stylesheet" href = "main.css" type = "text/css">
+  <title>Log In</title>
+</head>
+<body>
+  <div class = "center-con">
+    <a class = "flex-image"><img src = "FED/logo.png"></a>
+  </div>
+  <div class = "wrapper">
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center">Log In</h2>
+        <form id = "signup-form">
+          <div class="mb-3">
+            <label for="Login-username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="Login-username" placeholder="Enter your username">
+          </div>
+          <div class="mb-3">
+            <label for="Login-password" class="form-label">Password</label>
+            <input type="text" class="form-control" id="Login-password" placeholder="Enter your password">
+          </div>
+          <div id = "contact-submit" class="d-grid gap-2 col-12 mx-auto">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+          <div class = "options">
+            <li>Forget Username / Password</li>
+            <li>Don't have an account?<a href="Sign Up.html">Sign Up</a></li>
+          </div>
+        </form>
+      </div>   
+  </div>   
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
 </html>
