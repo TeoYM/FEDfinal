@@ -1,11 +1,118 @@
 .image-con{
-    display: flex;
-    justify-content: center;
-  }
+  display: flex;
+  justify-content: space-between;
+  max-width:100%; height:auto;
+  align-items: center;
+  padding: 10px;
+}
+.menu-image{
+  display:flex;
+  justify-content: right;
+}
+.header-con{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 80px; 
+  margin: auto;
+}
 .flex-con{
-    display: flex;
-    justify-content: space-evenly;
-    border: 1px solid black;
-    font-size: 24px;
-    margin: 5px;
-  }
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid black;
+  font-size: 24px;
+  margin: 5px;
+}
+.trending-con{
+  display: flex;
+  justify-content: center;
+}
+.trending-con a img{
+  max-width: 100%;
+  height: auto;
+}
+.center-con{
+  display: flex;
+  justify-content: center;
+}
+.center-cons{
+  display: flex;
+  justify-content: center;
+  margin: 75px;
+}
+.sub-button{
+  display: flex;
+  justify-content: center;
+}
+.options{
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+}
+.seasonal-product{
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  width: 400px;
+  height: 70px; 
+  margin: auto;
+}
+.likes{
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  width: 400px;
+  height: 70px; 
+  margin: auto;
+}
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: -5px;
+}
+
+.product-image {
+  width: 45%;
+  margin: 10px;
+  text-align: center;
+}
+
+.product-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.profile-container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.user-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-info h2 {
+  margin: 5px 0;
+}
+
+.tier {
+  background-color: #3498db;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
