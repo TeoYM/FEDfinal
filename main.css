@@ -170,3 +170,11 @@
   text-align: center;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
+.Featured-product{
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  width: 400px;
+  height: 70px; 
+  margin: auto;
+}
