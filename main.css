@@ -1,6 +1,18 @@
-.image-con{
+.container {
   display: flex;
   justify-content: space-between;
+  padding: 10px;
+}
+.image-con{
+  display: flex;
+  justify-content: left;
+  max-width:100%; height:auto;
+  align-items: center;
+  padding: 10px;
+}
+.burger-con{
+  display: flex;
+  justify-content: right;
   max-width:100%; height:auto;
   align-items: center;
   padding: 10px;
@@ -27,7 +39,6 @@
 }
 .display-area {
   width: 880px;
-/*   border: 1px solid black; */
   overflow-x: hidden;
   margin: auto;
 }
@@ -69,11 +80,17 @@
   margin: 5px;
   flex-wrap: nowrap;
 }
+.flex-con a {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+}
 .trending-con{
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
-.trending-con a img{
+.trending-con img{
   max-width: 100%;
   height: auto;
 }
@@ -153,7 +170,10 @@
 .user-info h2 {
   margin: 5px 0;
 }
-
+.card img {
+  width: 100%;
+  height: auto;
+}
 .tier {
   background-color: #3498db;
   color: #fff;
@@ -177,4 +197,8 @@
   width: 400px;
   height: 70px; 
   margin: auto;
+}
+.display-area {
+  overflow: hidden;
+  position: relative;
 }
