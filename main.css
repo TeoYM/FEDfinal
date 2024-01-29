@@ -1,4 +1,4 @@
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 400px) {
   .image-con {
     width: 100%;
     text-align: center;
@@ -10,7 +10,6 @@
 
   .cards-wrapper {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
   }
 
@@ -63,7 +62,6 @@
 
 .cards-wrapper {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
 }
 
