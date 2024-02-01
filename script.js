@@ -103,10 +103,10 @@ const productsContainer = document.getElementById('products-container');
             products.forEach(product => {
                 const productElement = document.createElement('div');
                 productElement.innerHTML = `
+                    <img src="${product.image}" alt="${product.title}">
                     <h3>${product.title}</h3>
                     <p>${product.description}</p>
                     <p>Price: $${product.price}</p>
-                    <img src="${product.image}" alt="${product.title}">
                     <hr>
                 `;
                 productsContainer.appendChild(productElement);

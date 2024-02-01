@@ -25,6 +25,9 @@
   .card {
     width: 100%;
   }
+  .products-container{
+    display: flex;
+  }
 }
 
 .display-area-container {
