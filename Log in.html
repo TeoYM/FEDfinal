@@ -8,13 +8,24 @@
   <title>Log In</title>
 </head>
 <body>
-  <div class = "center-con">
-    <a class = "flex-image"><img src = "FED/logo.png"></a>
-  </div>
+  <header>
+    <a href = "index.html">
+      <img class = "logo" src = "FED/logo1.png" alt = "Logo">
+    </a>
+    <ul class="navbar">
+      <li><a href = "">Men</a></li>
+      <li><a href = "">Womens</a></li>
+      <li><a href = "">Kids</a></li>
+    </ul>
+  </header>
+  <div class = "body">
+    <div class = "center-con">
+      <a class = "flex-image"><img src = "FED/hambruger menu.png"></a>
+    </div>
   <div class = "wrapper">
     <div class="container mt-5">
         <h2 class="mb-4 text-center">Log In</h2>
-        <form id = "signup-form">
+        <form id = "Log-in">
           <div class="mb-3" style="text-align: left;">
             <label for="Login-username" class="form-label">Username</label>
             <input type="text" class="form-control" id="Login-username" placeholder="Enter your username">
@@ -23,7 +34,7 @@
             <label for="Login-password" class="form-label">Password</label>
             <input type="text" class="form-control" id="Login-password" placeholder="Enter your password">
           </div>
-          <div id = "contact-submit" class="d-grid gap-2 col-12 mx-auto">
+          <div id = "login" class="d-grid gap-2 col-12 mx-auto">
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
           <div class = "options">

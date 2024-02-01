@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.log(data);
                 document.getElementById("contact-submit").disabled = false;
                 // getContacts(); // Make sure this function is defined somewhere in your code
+                document.getElementById("signup-success-message").style.display = "block";
+
 
                 // Clear the form
                 signupForm.reset();
@@ -56,7 +58,27 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById("contact-submit").disabled = false;
             });          
     }); 
+    
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const wrapper = document.querySelector('.cards-wrapper');
 // grab the dots
 const dots = document.querySelectorAll('.dot');

@@ -134,6 +134,8 @@
 .center-con {
   display: flex;
   justify-content: center;
+  margin: 75px;
+  align-items: center;
 }
 
 .center-cons {
@@ -254,4 +256,93 @@
 .display-area {
   overflow: hidden;
   position: relative;
+}
+body {
+  /* display: flex; */
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f8f9fa; /* Optional: Set background color */
+}
+.wrapper,
+.center-con {
+  width: 100%;
+  text-align: center;
+
+}
+.image-con {
+  flex-direction: column;
+}
+.menu-image {
+  justify-content: center;
+}
+.dots-wrapper {
+  display: none;
+}
+.card {
+  width: 100%;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the start */
+  padding: 10px 10% 10px 0px;
+  background-color: white;
+  z-index: 1000;
+  /* position: fixed;  */
+  width: 100%;
+}
+
+/* Targets elements with the class 'logo' and defines its styles */
+.logo{
+  cursor: pointer;
+  width: 50px; 
+  height: 50px; 
+  padding: 0;
+  margin-left: 40px;
+}
+/* Targets elements with the class 'navbar' and defines its styles */
+.navbar {
+  background-color: white;
+  text-align: center;
+  
+}
+/* Targets list items within elements with the class 'navbar' and defines their styles */
+.navbar li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+/* Targets anchor elements within list items of 'navbar' and defines their styles */
+.navbar li a{
+  position: relative;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+*before{
+  padding:0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.navbar li a:hover:after{
+  width: 100%;
+}
+/* Targets pseudo-elements after anchor elements within list items of 'navbar' */
+.navbar li a:after{
+  content: "";
+  position: absolute;
+  background-color: black;
+  height: 3px;
+  width:0;
+  left:0;
+  bottom: -10px;
+  transition: 0.3s;
+}
+.body
+{
+  display: flex;
 }
