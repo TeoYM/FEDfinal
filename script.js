@@ -116,3 +116,23 @@ dots.forEach((dot, idx) => {
     
   });
 });
+const productsContainer = document.getElementById('products-container');
+
+    fetch('https://fakestoreapi.com/products')
+        .then(res => res.json())
+        .then(products => {
+            // Process the products and update the DOM
+            products.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.innerHTML = `
+                    <img src="${product.image}" alt="${product.title}">
+                    <h3>${product.title}</h3>
+                    <p>${product.description}</p>
+                    <p>Price: $${product.price}</p>
+                    <hr>
+                `;
+                productsContainer.appendChild(productElement);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+
