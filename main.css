@@ -67,6 +67,7 @@
 .cards-wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .display-area {
@@ -286,37 +287,86 @@ body {
 .card {
   width: 100%;
 }
-header {
+/* Header */
+header{
+  background-color: white;
+}
+li{
+  list-style: none;
+}
+a{
+  color: black;
+  text-decoration: none;
+}
+.navbar{
+  min-height: 70px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; /* Align items to the start */
-  padding: 10px 10% 10px 0px;
-  background-color: white;
-  z-index: 1000;
-  /* position: fixed;  */
-  width: 100%;
+  align-items: center;
+  padding: 0 24px;
 }
-
-/* Targets elements with the class 'logo' and defines its styles */
-.logo{
+.nav-menu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+}
+.nav-link{
+  transition: 0.7s ease;
+}
+.nav:hover{
+  color:dodgerblue;
+}
+.hamburger{
+  display:none;
   cursor: pointer;
-  width: 50px; 
-  height: 50px; 
-  padding: 0;
-  margin-left: 40px;
 }
-/* Targets elements with the class 'navbar' and defines its styles */
-.navbar {
-  background-color: white;
-  text-align: center;
-  
+.bar{
+  display:block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: black;
+
 }
-/* Targets list items within elements with the class 'navbar' and defines their styles */
+@media(max-width:768px){
+  .hamburger{
+      display: block;
+  }
+  .hamburger.active .bar:nth-child(2){
+      opacity: 0;
+  }
+  .hamburger.active .bar:nth-child(1){
+      transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.active .bar:nth-child(3){
+      transform: translateY(-8px) rotate(-45deg);
+  }
+  .nav-menu{
+      position: fixed;
+      left: -100%;
+      top:70px;
+      gap:0;
+      flex-direction:column;
+      background-color: white;
+      width: 100%;
+      text-align: center;
+      transition: 0.3s;
+  }
+  .nav-item{
+      margin: 16px 0;
+  }
+  .nav-menu.active{
+      left:0;
+  }
+}
 .navbar li {
   display: inline-block;
   padding: 0px 20px;
 }
-/* Targets anchor elements within list items of 'navbar' and defines their styles */
+
 .navbar li a{
   position: relative;
   text-decoration: none;
@@ -334,7 +384,7 @@ header {
 .navbar li a:hover:after{
   width: 100%;
 }
-/* Targets pseudo-elements after anchor elements within list items of 'navbar' */
+
 .navbar li a:after{
   content: "";
   position: absolute;
@@ -345,7 +395,17 @@ header {
   bottom: -10px;
   transition: 0.3s;
 }
-.body
-{
-  display: flex;
+.logo{
+  cursor: pointer;
+  width: 50px; 
+  height: 50px; 
+  padding: 0;
+  margin-left: 40px;
 }
+.center-con {
+  display: flex;
+  justify-content: center;
+  margin: 75px;
+  align-items: center;
+}
+/* End of header */
