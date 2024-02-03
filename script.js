@@ -99,15 +99,69 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     }
 });
+// if log in successful add the username and password to local storage
+
+document.addEventListener("DOMContentLoaded", function () {
+    const APIKEY = "65b11466a07ee8418b038306";
+  
+    document.getElementById("Log-in").addEventListener("submit", function (e) {
+      e.preventDefault();
+  
+      let loginUsername = document.getElementById("Login-username").value;
+      let loginPassword = document.getElementById("Login-password").value;
+  
+      // Simulate a login check (replace this with your actual authentication logic)
+      authenticateUser(APIKEY, loginUsername, loginPassword);
+    });
+  
+    function authenticateUser(apiKey, username, password) {
+    // Fetch user data from the API (replace this with your actual API call)
+    fetch(`https://userdata-f68d.restdb.io/rest/contact-info?Username=${username}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-apikey": apiKey,
+        "Cache-Control": "no-cache"
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        let user = data.find(user => user.Username === username && user.Password === password);
+        if (user) {
+          localStorage.setItem('authenticatedUser', JSON.stringify(user));
+          alert("Login success");
+          window.location.href = "index.html";
+        } else {
+          alert("Invalid credentials");
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+  
+  });
 
 
+// load the local storage into the profile page
+// document.addEventListener("DOMContentLoaded", function () {
+//     // Retrieve user data from localStorage
+//     const authenticatedUser = JSON.parse(localStorage.getItem('authenticatedUser'));
+  
+//     if (authenticatedUser) {
+//       // Update user info with the username
+//       const usernameDisplay = document.getElementById('usernameDisplay');
+//       usernameDisplay.innerText = authenticatedUser.Username;
+//     } else {
+//       // Handle the case when the user is not authenticated
+//       console.log("User not authenticated");
+//     }
+//     window.addEventListener("beforeunload", function () {
+//       localStorage.removeItem('authenticatedUser');
+//     });
+//   });
 
-
-
-
-
-
-
+//navigation menu
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
 
@@ -125,18 +179,18 @@ addEventListener("click", ()=>{
 
 
 
-// document.addEventListener("DOMContentLoaded", function () {
-//     // Retrieve user data from localStorage
-//     const authenticatedUser = JSON.parse(localStorage.getItem('authenticatedUser'));
+document.addEventListener("DOMContentLoaded", function () {
+    // Retrieve user data from localStorage
+    const authenticatedUser = JSON.parse(localStorage.getItem('authenticatedUser'));
   
-//     if (authenticatedUser) {
-//       // User is authenticated, you can use the data as needed
-//       console.log("Authenticated User:", authenticatedUser);
-//     } else {
-//       // User is not authenticated, handle accordingly
-//       console.log("User not authenticated");
-//     }
-//   });
+    if (authenticatedUser) {
+      // User is authenticated, you can use the data as needed
+      console.log("Authenticated User:", authenticatedUser);
+    } else {
+      // User is not authenticated, handle accordingly
+      console.log("User not authenticated");
+    }
+  });
 
 
 
