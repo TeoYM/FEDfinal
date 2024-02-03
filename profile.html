@@ -24,7 +24,7 @@
                     <a href="#" class="nav-link">Kids</a>
                 </li> 
                 <li class="nav-item">
-                  <a href="#" class="nav-link">Log In</a>
+                  <a href="Log in.html" class="nav-link">Log In</a>
               </li> 
             </ul>
             <div class="hamburger">
@@ -39,20 +39,42 @@
           <div class="user-info" id="userInfo">
             <h2>User Info</h2>
             <p><strong>Username:</strong> <span id="usernameDisplay"></span></p>
-            <p class="tier">Gold Tier</p>
-            <p class="points">Points Available: 500</p>
+            <p class="tier">Tier: <span id="tierDisplay"></span></p>
+            <p class="points">Points Available: <span id="pointsDisplay"></span></p>
           </div>
           
         </div>
         <script>
           document.addEventListener("DOMContentLoaded", function () {
-  // Retrieve user data from localStorage
-  const authenticatedUser = JSON.parse(localStorage.getItem('authenticatedUser'));
+          // Retrieve user data from localStorage
+          const authenticatedUser = JSON.parse(localStorage.getItem('authenticatedUser'));
 
-  if (authenticatedUser) {
-    // Update user info with the username
-    const usernameDisplay = document.getElementById('usernameDisplay');
-    usernameDisplay.innerText = authenticatedUser.Username;
+          if (authenticatedUser) {
+            // Update user info with the username
+            const usernameDisplay = document.getElementById('usernameDisplay');
+            const pointsDisplay = document.getElementById('pointsDisplay');
+            const tierDisplay = document.getElementById('tierDisplay');
+
+
+            usernameDisplay.innerText = authenticatedUser.Username;
+            pointsDisplay.innerText = authenticatedUser.Points || 'N/A';
+    const points = parseInt(authenticatedUser.Points) || 0; // Ensure points are a number
+      let tier = '';
+      let tierColor = '';
+
+      if (points >= 200) {
+        tier = 'Gold';
+        tierColor = 'gold';
+      } else if (points >= 100) {
+        tier = 'Silver';
+        tierColor = 'silver';
+      } else {
+        tier = 'Ordinary';
+        tierColor = 'white';
+      }
+
+      tierDisplay.innerText = tier;
+      tierDisplay.style.color = tierColor;
   } else {
     // Handle the case when the user is not authenticated
     console.log("User not authenticated");

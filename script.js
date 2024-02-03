@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let username = document.getElementById("username").value;
         let email = document.getElementById("email").value;
         let phonenumber = document.getElementById("phonenumber").value;
+        let points = 0;
   
         let jsondata = {
             "Name": name,
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
             "EmailAddress": email,
             "Password": password,
             "Phonenumber": phonenumber,
+            "Points": points,
         };
   
         let settings = {
