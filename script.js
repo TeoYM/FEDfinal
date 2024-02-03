@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function() {
     const APIKEY = "65b11466a07ee8418b038306";
     // getContacts(); // Make sure this function is defined somewhere in your code
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
                 console.log(data);
                 document.getElementById("contact-submit").disabled = false;
-                // getContacts(); // Make sure this function is defined somewhere in your code
+                 //getContacts(APIKEY); // Make sure this function is defined somewhere in your code
                 document.getElementById("signup-success-message").style.display = "block";
 
 
@@ -57,9 +58,48 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.error('Error:', error);
                 document.getElementById("contact-submit").disabled = false;
             });          
-    }); 
-    
+    });  
+    function getContacts(APIKEY) {
+        let settings = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "x-apikey": APIKEY,
+                "Cache-Control": "no-cache"
+            },
+        };
+
+        fetch("https://userdata-f68d.restdb.io/rest/contact-info", settings)
+            .then(response => response.json())
+            .then(data => {
+                // Assuming each data entry has a unique identifier, use the username as the key in the dictionary
+                let contactsDictionary = {};
+                data.forEach(contact => {
+                    contactsDictionary[contact.Username] = contact;
+                });
+
+                console.log("Contacts Dictionary:", contactsDictionary);
+                document.getElementById("login-form").addEventListener("submit", function (e) {
+                    e.preventDefault();
+      
+                    let loginUsername = document.getElementById("Login-username").value;
+                    let loginPassword = document.getElementById("Login-password").value;
+      
+                    if (!contactsDictionary[loginUsername]) {
+                      alert("User not registered");
+                    } else if (contactsDictionary[loginUsername].Password !== loginPassword) {
+                      alert("Wrong password");
+                    } else {
+                      alert("Login success");
+                    }
+                  });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
 });
+
 
 
 
