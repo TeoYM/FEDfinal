@@ -125,7 +125,18 @@ addEventListener("click", ()=>{
 
 
 
-
+// document.addEventListener("DOMContentLoaded", function () {
+//     // Retrieve user data from localStorage
+//     const authenticatedUser = JSON.parse(localStorage.getItem('authenticatedUser'));
+  
+//     if (authenticatedUser) {
+//       // User is authenticated, you can use the data as needed
+//       console.log("Authenticated User:", authenticatedUser);
+//     } else {
+//       // User is not authenticated, handle accordingly
+//       console.log("User not authenticated");
+//     }
+//   });
 
 
 
