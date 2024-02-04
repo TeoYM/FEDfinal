@@ -167,7 +167,18 @@
   height: 70px;
   margin: auto;
 }
-
+/* product  */
+#products-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.product-container {
+  /* width: calc(33.33% - 20px); Adjust the width as needed, and the 20px is for margin */
+  margin: 10px; /* Add margin between products */
+  box-sizing: border-box;
+  flex: 1;
+}
+/* end of product */
 .likes {
   display: flex;
   justify-content: center;

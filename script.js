@@ -244,11 +244,9 @@ const productsContainer = document.getElementById('products-container');
             products.forEach(product => {
                 const productElement = document.createElement('div');
                 productElement.innerHTML = `
-                    <img src="${product.image}" alt="${product.title}">
-                    <h3>${product.title}</h3>
-                    <p>${product.description}</p>
-                    <p>Price: $${product.price}</p>
-                    <hr>
+                <img src="${product.image}" alt="${product.title}" style = "max-width: 250px; height: 250px;">
+                <h3>${product.title}</h3>
+                <p>Price: $${product.price}</p>
                 `;
                 productsContainer.appendChild(productElement);
             });

@@ -1,22 +1,45 @@
 <!DOCTYPE html>
-<html lang ="en">
+<html lang="en">
+
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <head>
-        <title>login page</title>
-        <link rel = "stylesheet" href = "main.css" type = "text/css">
-    </head>
-    <div class="image-con">
-        <a class="flex-image"><img src="FED/logo.png" alt="Logo"></a>
-        <a class="menu-image"><img src="FED/hamburger menu.png" alt="Menu"></a>
-     </div>
-    <div class = "seasonal-product">
-        <h1>Seasonal Items</h1>
-    </div>
-    <div class = "center-cons">
-        <a><img src = "FED/logo.png"></a>
+    <title>Product Page</title>
+    <link rel="stylesheet" href="main.css" type="text/css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+          <a href = "index.html">
+            <img class = "logo" src = "FED/logo1.png" alt = "Logo">
+          </a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Men</a>
+                </li> 
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Women</a>
+                </li> 
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Kids</a>
+                </li> 
+                <li class="nav-item">
+                  <a href="#" class="nav-link">Log In</a>
+              </li> 
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+      </header>
+    <div class="seasonal-product">
+        <h1>Products</h1>
     </div>
     <div id="products-container">
         <!-- Product data will be displayed here -->
     </div>
     <script src="script.js"></script>
+</body>
 </html>
