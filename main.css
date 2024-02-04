@@ -420,3 +420,12 @@ a{
   align-items: center;
 }
 /* End of header */
+#lottieContainer {
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  position: fixed; /* Adjust position property */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Set a higher z-index */
+}

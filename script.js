@@ -130,9 +130,24 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(data => {
         let user = data.find(user => user.Username === username && user.Password === password);
         if (user) {
-          localStorage.setItem('authenticatedUser', JSON.stringify(user));
-          alert("Login success");
-          window.location.href = "index.html";
+          // Show the Lottie animation
+          document.body.style.backgroundColor = 'white';
+          // document.getElementById('lottieContainer').removeAttribute('hidden');
+          document.getElementById('lottieContainer').removeAttribute('hidden');
+const lottiePlayer = document.createElement('dotlottie-player');
+lottiePlayer.setAttribute('src', 'https://lottie.host/fd5cc3a4-2683-4e6e-81c0-85f4c2ec16c2/cwV5WLalOi.json');
+lottiePlayer.setAttribute('background', 'white');
+lottiePlayer.setAttribute('speed', '1');
+lottiePlayer.setAttribute('style', 'width: 100vw; height: 100vh;');
+lottiePlayer.setAttribute('loop', '');
+lottiePlayer.setAttribute('autoplay', '');
+document.getElementById('lottieContainer').appendChild(lottiePlayer);
+
+          setTimeout(() => {
+            localStorage.setItem('authenticatedUser', JSON.stringify(user));
+            alert("Login success");
+            window.location.href = "index.html";
+          }, 3000); // Wait for 3 seconds
         } else {
           alert("Invalid credentials");
         }
