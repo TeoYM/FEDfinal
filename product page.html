@@ -6,6 +6,48 @@
     <title>Product Page</title>
     <link rel="stylesheet" href="main.css" type="text/css">
 </head>
+<style>
+    /* Add your custom styles here */
+    body {
+        margin: 20px 100px 0 100px; /* Add a margin of 20px on each side of the body */
+        background-color: white;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .card {
+        flex: 0 0 20%;
+        margin-bottom: 30px;
+        border: 2px solid black;
+        padding: 10px;
+        height: auto; /* Set a fixed height for each card */
+        width: 300px;
+        align-items: center;
+        justify-content: center;
+    }
+    .card img {
+        width: 100%;
+        height: 250px;
+        width: 250px;
+        object-fit: contain;
+    }
+    .card-body{
+        width: 250px;
+    }
+
+    /* Custom styles for the anchor tags */
+    .card-body a {
+        color: inherit; /* Use the same color as the surrounding text */
+        text-decoration: none; /* Remove the default underline */
+    }
+    @media screen and (max-width: 768px) {
+        .card {
+            flex: 0 0 100%; /* Take full width on smaller screens */
+        }
+    }
+</style>
 
 <body>
     <header>
@@ -40,6 +82,33 @@
     <div id="products-container">
         <!-- Product data will be displayed here -->
     </div>
-    <script src="script.js"></script>
+    <script>
+        const productsContainer = document.getElementById('products-container');
+
+        fetch('https://fakestoreapi.com/products')
+            .then(res => res.json())
+            .then(products => {
+                // Process the products and update the DOM
+                products.forEach(product => {
+                    const productElement = document.createElement('div');
+                    productElement.className = 'card';
+                    productElement.innerHTML = `
+                    <a href="product description.html?title=${encodeURIComponent(product.title)}&description=${encodeURIComponent(product.description)}&price=${encodeURIComponent(product.price)}&image=${encodeURIComponent(product.image)}">
+    <img src="${product.image}" class="card-img-top" alt="${product.title}" width="250" height="250">
+</a>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="product_details.html?title=${encodeURIComponent(product.title)}&description=${encodeURIComponent(product.description)}&price=${encodeURIComponent(product.price)}">${product.title}</a>
+                            </h5>
+                            
+                            <p class="card-text">Price: $${product.price}</p>
+                            <button class="btn btn-primary">Add to Cart</button>
+                        </div>
+                    `;
+                    productsContainer.appendChild(productElement);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
 </body>
 </html>
