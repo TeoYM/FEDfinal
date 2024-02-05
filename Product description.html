@@ -1,0 +1,34 @@
+<!-- product_details.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <!-- Add your custom styles here -->
+</head>
+<body>
+
+    <img id="product-image" alt="Product Image" width="250" height="250">
+    <h2 id="product-title"></h2>
+    <p id="product-description"></p>
+    <p id="product-price"></p>
+    <button class="btn btn-primary">Add to Cart</button>
+
+    <script>
+        // Fetch product details from the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const title = urlParams.get('title');
+        const description = urlParams.get('description');
+        const price = urlParams.get('price');
+        const image = urlParams.get('image');
+
+        // Update the content on the page
+        document.getElementById('product-image').src = image;
+        document.getElementById('product-title').innerText = title;
+        document.getElementById('product-description').innerText = description;
+        document.getElementById('product-price').innerText = `Price: $${price}`;
+    </script>
+
+</body>
+</html>

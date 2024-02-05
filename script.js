@@ -145,7 +145,7 @@ document.getElementById('lottieContainer').appendChild(lottiePlayer);
 
           setTimeout(() => {
             localStorage.setItem('authenticatedUser', JSON.stringify(user));
-            alert("Login success");
+            //alert("Login success");
             window.location.href = "index.html";
           }, 3000); // Wait for 3 seconds
         } else {
