@@ -102,13 +102,32 @@
                             </h5>
                             
                             <p class="card-text">Price: $${product.price}</p>
-                            <button class="btn btn-primary">Add to Cart</button>
+                            <button class="btn btn-primary" onclick="addToCart('${product.title}', ${product.price})">Add to Cart</button>
                         </div>
                     `;
                     productsContainer.appendChild(productElement);
                 });
             })
             .catch(error => console.error('Error:', error));
+
+        // Function to add product to cart
+        function addToCart(productName, productPrice) {
+            // Create or retrieve cart from local storage
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Add product to cart
+            var product = {
+                name: productName,
+                price: productPrice
+            };
+            cart.push(product);
+
+            // Save updated cart to local storage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Display a message (you can customize this part)
+            alert('Product added to cart!');
+        }
     </script>
 </body>
 </html>
