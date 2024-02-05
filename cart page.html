@@ -31,6 +31,18 @@
             width: 100%; /* Take full width on smaller screens */
         }
     }
+
+    #total {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+
+    .remove-btn {
+        cursor: pointer;
+        color: red;
+        text-decoration: underline;
+        margin-top: 10px;
+    }
 </style>
 
 <body>
@@ -51,25 +63,47 @@
         <div id="cart-items">
             <!-- Cart items will be displayed here -->
         </div>
+        <div id="total">Total: $<span id="cart-total">0.00</span></div>
     </div>
 
     <script>
         // Retrieve cart items from local storage
-        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
         const cartContainer = document.getElementById('cart-items');
+        const cartTotalElement = document.getElementById('cart-total');
 
-        // Render cart items on the page
-        cartItems.forEach(item => {
-            const cartItemElement = document.createElement('div');
-            cartItemElement.className = 'cart-item';
-            cartItemElement.innerHTML = `
-                <img src="${item.image}" alt="${item.name}">
-                <h3>${item.name}</h3>
-                <p>Price: $${item.price}</p>
-            `;
-            cartContainer.appendChild(cartItemElement);
-        });
-        
+        // Function to render cart items on the page
+        function renderCartItems() {
+            cartContainer.innerHTML = '';
+            cartItems.forEach((item, index) => {
+                const cartItemElement = document.createElement('div');
+                cartItemElement.className = 'cart-item';
+                cartItemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p>Price: $${item.price}</p>
+                    <span class="remove-btn" onclick="removeFromCart(${index})">Remove</span>
+                `;
+                cartContainer.appendChild(cartItemElement);
+            });
+            updateTotal();
+        }
+
+        // Function to calculate and update the total
+        function updateTotal() {
+            const total = cartItems.reduce((acc, item) => acc + item.price, 0).toFixed(2);
+            cartTotalElement.textContent = total;
+        }
+
+        // Function to remove an item from the cart
+        function removeFromCart(index) {
+            cartItems.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            renderCartItems();
+        }
+
+        // Initial rendering
+        renderCartItems();
     </script>
 </body>
 
