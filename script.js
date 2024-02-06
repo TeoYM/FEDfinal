@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 // Clear the form
                 signupForm.reset();
+                window.location.href = "Log in.html";
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -146,7 +147,7 @@ document.getElementById('lottieContainer').appendChild(lottiePlayer);
           setTimeout(() => {
             localStorage.setItem('authenticatedUser', JSON.stringify(user));
             //alert("Login success");
-            window.location.href = "index.html";
+            window.location.href = "index1.html";
           }, 3000); // Wait for 3 seconds
         } else {
           alert("Invalid credentials");
@@ -250,21 +251,21 @@ dots.forEach((dot, idx) => {
     
   });
 });
-const productsContainer = document.getElementById('products-container');
+// const productsContainer = document.getElementById('products-container');
 
-    fetch('https://fakestoreapi.com/products')
-        .then(res => res.json())
-        .then(products => {
-            // Process the products and update the DOM
-            products.forEach(product => {
-                const productElement = document.createElement('div');
-                productElement.innerHTML = `
-                <img src="${product.image}" alt="${product.title}" style = "max-width: 250px; height: 250px;">
-                <h3>${product.title}</h3>
-                <p>Price: $${product.price}</p>
-                `;
-                productsContainer.appendChild(productElement);
-            });
-        })
-        .catch(error => console.error('Error:', error));
+//     fetch('https://fakestoreapi.com/products')
+//         .then(res => res.json())
+//         .then(products => {
+//             // Process the products and update the DOM
+//             products.forEach(product => {
+//                 const productElement = document.createElement('div');
+//                 productElement.innerHTML = `
+//                 <img src="${product.image}" alt="${product.title}" style = "max-width: 250px; height: 250px;">
+//                 <h3>${product.title}</h3>
+//                 <p>Price: $${product.price}</p>
+//                 `;
+//                 productsContainer.appendChild(productElement);
+//             });
+//         })
+//         .catch(error => console.error('Error:', error));
 

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product List</title>
+    <!-- <link rel="stylesheet" href="main.css" type="text/css"> -->
     <style>
         /* Add your custom styles here */
         body {
@@ -30,6 +31,8 @@
             height: 250px;
             width: 250px;
             object-fit: contain;
+            display: block;
+            margin: auto;
         }
         .card-body{
             width: 250px;
@@ -48,7 +51,32 @@
     </style>
 </head>
 <body>
-
+    <header>
+        <nav class="navbar">
+          <a href = "index.html">
+            <img class = "logo" src = "FED/logo1.png" alt = "Logo">
+          </a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="Productpage.html" class="nav-link">Products</a>
+                </li> 
+                <li class="nav-item">
+                    <a href="cart page.html" class="nav-link">Cart</a>
+                </li> 
+                <li class="nav-item">
+                    <a href="profile.html" class="nav-link">Profile</a>
+                </li> 
+                <!-- <li class="nav-item">
+                  <a href="Log in.html" class="nav-link">Log In</a>
+              </li>  -->
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
     <div id="products-container" class="container mt-4">
         <!-- Product items will be added here dynamically -->
     </div>

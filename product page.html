@@ -17,46 +17,67 @@
         flex-wrap: wrap;
         justify-content: space-between;
     }
-    .card {
-        flex: 0 0 20%;
-        margin-bottom: 30px;
+    .Pcard {
+        flex: 0 0 calc(25% - 20px); /* Adjusted width with margin */
+        margin-right: 20px; /* Margin on the right side */
+        margin-bottom: 20px; /* Margin at the bottom */
         border: 2px solid black;
         padding: 10px;
-        height: auto; /* Set a fixed height for each card */
-        width: 300px;
+        height: auto;
         align-items: center;
         justify-content: center;
+        box-sizing: border-box; /* Add box-sizing to include padding and border in the width calculation */
     }
-    .card img {
+
+    .Pcard img {
         width: 100%;
         height: 250px;
         width: 250px;
         object-fit: contain;
+        display: block;
+        margin: auto;
     }
-    .card-body {
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center content horizontally */
-    font-size: 18px;
+    .Pcard-body {
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Center content horizontally */
+        font-size: 18px;
     }
-    .card footer{
+    .Pcard footer{
         margin-top: auto;
         text-align: center;
     }
     .btn {
-        margin: auto;
-    }
+    margin-left: 0;
+    background-color: white; /* Set the initial background color */
+    color: black; /* Set the text color */
+    padding: 10px; /* Adjust padding for better appearance */
+    border: 2px solid black; /* Add a border for better visibility */
+    cursor: pointer; /* Change cursor on hover for better feedback */
+    transition: background-color 0.3s ease; /* Add a smooth transition effect for background color change */
+}
+
+/* Add a hover effect */
+.btn:hover {
+    background-color: blue; /* Change background color on hover */
+    color: white; /* Change text color on hover */
+}
     /* Custom styles for the anchor tags */
-    .card-body a {
-        color: inherit; /* Use the same color as the surrounding text */
+    .Pcard-body a {
+        color: black; /* Use the same color as the surrounding text */
         text-decoration: none; /* Remove the default underline */
+
     }
+    .seasonal-product {
+    margin-bottom: 20px; /* Add margin below the seasonal product heading */
+}
+
     @media screen and (max-width: 768px) {
-        .card {
+        .Pcard {
             flex: 0 0 100%; /* Take full width on smaller screens */
         }
-        .card-body{
+        .Pcard-body{
             font-size: 12px;
         }
     }
@@ -70,18 +91,9 @@
             <img class = "logo" src = "FED/logo1.png" alt = "Logo">
           </a>
             <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Men</a>
-                </li> 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Women</a>
-                </li> 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Kids</a>
-                </li> 
-                <li class="nav-item">
-                  <a href="#" class="nav-link">Log In</a>
-              </li> 
+              <li class="nav-item">
+                <a href="cart page.html" class="nav-link">Cart</a>
+            </li> 
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -96,8 +108,8 @@
     <div id="products-container">
         <!-- Product data will be displayed here -->
     </div>
+    <script src="script.js"></script>
     <script>
-        
         const productsContainer = document.getElementById('products-container');
         const cart = [];
 
@@ -110,17 +122,17 @@
                 // Process the products and update the DOM
                 products.forEach(product => {
                     const productElement = document.createElement('div');
-                    productElement.className = 'card';
+                    productElement.className = 'Pcard';
                     productElement.innerHTML = `
                     <a href="product description.html?title=${encodeURIComponent(product.title)}&description=${encodeURIComponent(product.description)}&price=${encodeURIComponent(product.price)}&image=${encodeURIComponent(product.image)}">
-    <img src="${product.image}" class="card-img-top" alt="${product.title}" width="250" height="250">
+    <img src="${product.image}" class="Pcard-img-top" alt="${product.title}" width="250" height="250">
 </a>
-                        <div class="card-body">
-                            <h5 class="card-title">
+                        <div class="Pcard-body">
+                            <h5 class="Pcard-title">
                                 <a href="product_details.html?title=${encodeURIComponent(product.title)}&description=${encodeURIComponent(product.description)}&price=${encodeURIComponent(product.price)}">${product.title}</a>
                             </h5>
                             
-                            <p class="card-text">Price: $${product.price}</p>
+                            <p class="Pcard-text">Price: $${product.price}</p>
                             <button class="btn btn-primary" onclick="addToCart('${product.title}', ${product.price})">Add to Cart</button>
                         </div>
                     `;

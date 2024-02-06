@@ -14,17 +14,17 @@
           </a>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Men</a>
+                    <a href="Product page.html" class="nav-link">Products</a>
                 </li> 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Women</a>
+                    <a href="cart page.html" class="nav-link">Cart</a>
                 </li> 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Kids</a>
+                    <a href="profile.html" class="nav-link">Profile</a>
                 </li> 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a href="Log in.html" class="nav-link">Log In</a>
-              </li> 
+              </li>  -->
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -34,8 +34,31 @@
         </nav>
     </header>
     <section>
-        
+        <h1 style="text-align: center;">New Items</h1>
+        <div id="products-container" class="index-container"></div>
     </section>
-    <script src="script.js"></script> 
+    <script>
+        const productsContainer = document.getElementById('products-container');
+
+        fetch('https://fakestoreapi.com/products')
+            .then(res => res.json())
+            .then(products => {
+                // Process the first 5 products and update the DOM
+                for (let i = 0; i < 5; i++) {
+                    const product = products[i];
+                    const productElement = document.createElement('div');
+                    productElement.className = 'index-box';
+                    // Add an anchor element around the image linking to product_details.html
+                    productElement.innerHTML = `
+                        <a href="product description.html?title=${encodeURIComponent(product.title)}&description=${encodeURIComponent(product.description)}&price=${encodeURIComponent(product.price)}&image=${encodeURIComponent(product.image)}">
+                            <img src="${product.image}" alt="${product.title}" width="200" height="200">
+                        </a>
+                    `;
+                    productsContainer.appendChild(productElement);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>

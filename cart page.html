@@ -48,7 +48,7 @@
 <body>
     <header>
         <nav class="navbar">
-            <a href="index.html">
+            <a href="index1.html">
                 <img class="logo" src="FED/logo1.png" alt="Logo">
             </a>
             <ul class="nav-menu">
@@ -65,7 +65,7 @@
         </div>
         <div id="total">Total: $<span id="cart-total">0.00</span></div>
     </div>
-
+    
     <script>
         // Retrieve cart items from local storage
         let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
@@ -80,7 +80,7 @@
                 cartItemElement.className = 'cart-item';
                 cartItemElement.innerHTML = `
                     <img src="${item.image}" alt="${item.name}">
-                    <h3>${item.name}</h3>
+                    <h3>Item Name: ${item.title}</h3>
                     <p>Price: $${item.price}</p>
                     <span class="remove-btn" onclick="removeFromCart(${index})">Remove</span>
                 `;
