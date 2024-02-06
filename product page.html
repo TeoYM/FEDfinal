@@ -133,7 +133,7 @@
                             </h5>
                             
                             <p class="Pcard-text">Price: $${product.price}</p>
-                            <button class="btn btn-primary" onclick="addToCart('${product.title}', ${product.price})">Add to Cart</button>
+                            <button class="btn btn-primary" onclick="addToCart('${product.title}', ${product.price}, '${product.image}')">Add to Cart</button>
                         </div>
                     `;
                     const btn = productElement.querySelector('.btn');
@@ -144,14 +144,15 @@
             .catch(error => console.error('Error:', error));
 
         // Function to add product to cart
-        function addToCart(productName, productPrice) {
+        function addToCart(productTitle, productPrice,productImage) {
             // Create or retrieve cart from local storage
             var cart = JSON.parse(localStorage.getItem('cart')) || [];
 
             // Add product to cart
             var product = {
-                name: productName,
-                price: productPrice
+                title: productTitle,
+                price: productPrice,
+                image: productImage
             };
             cart.push(product);
 
