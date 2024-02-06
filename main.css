@@ -470,7 +470,7 @@ a{
   margin: 0 10px;
   box-shadow: 0 0 20px 2 rgba(0, 0, 0, 0.1);
   transition: 1s;
-  border: 5px solid black; /* Add a black border */
+  border: 3px solid black; /* Add a black border */
   box-sizing: border-box;
 }
 .index-box img{
@@ -484,4 +484,24 @@ a{
 }
 .productdescriptioncontainer{
   margin: 0px 100px;
+}
+
+/* Add these styles to main.css */
+#product-image-container {
+  float: left;
+  margin-right: 20px; /* Adjust the margin as needed */
+  margin-left: 100px;
+}
+
+#product-details-container {
+  float: right;
+  width: 60%;
+  margin-right: 100px; /* Adjust the width as needed */
+}
+
+/* Clear the float to prevent layout issues */
+.productdescriptioncontainer::after {
+  content: "";
+  display: table;
+  clear: both;
 }
