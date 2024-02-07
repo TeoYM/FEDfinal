@@ -665,3 +665,55 @@ body {
   background-color: black;
   color: white;
 }
+/* Add this to your existing CSS or create a new style block */
+/* start of profile page */
+.weekly-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-circle {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0 5px;
+  background-color: #ccc; /* Default color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logged-in {
+  background-color: green; /* Change color or add tick styling */
+}
+.logged-in::before {
+  content: '\2713'; /* Unicode character for checkmark/tick */
+  font-size: 24px; /* Adjust the font size as needed */
+  color: white; /* Color of the checkmark/tick */
+}
+#Logoutbutton {
+  margin-left: 0;
+  width: 200px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #0d6efd; /* Set the initial background color */
+  color: white; /* Set the text color */
+  padding: 10px; /* Adjust padding for better appearance */
+  /* border: 2px solid black; Add a border for better visibility */
+  cursor: pointer; /* Change cursor on hover for better feedback */
+  transition: background-color 0.3s ease; /* Add a smooth transition effect for background color change */
+  }
+  
+  /* Add a hover effect */
+  #Logoutbutton:hover {
+  background-color: white; /* Change background color on hover */
+  color: #0d6efd; /* Change text color on hover */
+  }
+.Log-Out-button{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+/* end of profile page */

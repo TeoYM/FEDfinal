@@ -10,18 +10,15 @@
     <body>
       <header>
         <nav class="navbar">
-          <a href = "index.html">
+          <a href = "index1.html">
             <img class = "logo" src = "FED/logo1.png" alt = "Logo">
           </a>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Men</a>
+                    <a href="product page.html" class="nav-link">Product</a>
                 </li> 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Women</a>
-                </li> 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Kids</a>
+                    <a href="cart page.html" class="nav-link">Cart</a>
                 </li> 
                 <li class="nav-item">
                   <a href="Log in.html" class="nav-link">Log In</a>
@@ -41,50 +38,28 @@
             <p><strong>Username:</strong> <span id="usernameDisplay"></span></p>
             <p class="tier">Tier: <span id="tierDisplay"></span></p>
             <p class="points">Points Available: <span id="pointsDisplay"></span></p>
-          </div>
-          
+          </div>          
         </div>
-        <script>
-          document.addEventListener("DOMContentLoaded", function () {
-          // Retrieve user data from localStorage
-          const authenticatedUser = JSON.parse(localStorage.getItem('authenticatedUser'));
-
-          if (authenticatedUser) {
-            // Update user info with the username
-            const usernameDisplay = document.getElementById('usernameDisplay');
-            const pointsDisplay = document.getElementById('pointsDisplay');
-            const tierDisplay = document.getElementById('tierDisplay');
-
-
-            usernameDisplay.innerText = authenticatedUser.Username;
-            pointsDisplay.innerText = authenticatedUser.Points || 'N/A';
-    const points = parseInt(authenticatedUser.Points) || 0; // Ensure points are a number
-      let tier = '';
-      let tierColor = '';
-
-      if (points >= 200) {
-        tier = 'Gold';
-        tierColor = 'gold';
-      } else if (points >= 100) {
-        tier = 'Silver';
-        tierColor = 'silver';
-      } else {
-        tier = 'Ordinary';
-        tierColor = 'white';
-      }
-
-      tierDisplay.innerText = tier;
-      tierDisplay.style.color = tierColor;
-  } else {
-    // Handle the case when the user is not authenticated
-    console.log("User not authenticated");
-  }
-  window.addEventListener("beforeunload", function () {
-    localStorage.removeItem('authenticatedUser');
-  });
-});
-        
-        </script>
+        <section>
+          <!-- Add this inside the <body> tag, after the existing content -->
+            <h1 style="text-align: center;">Daily Log In</h1>
+            <div class="weekly-progress">
+            <div class="day-circle" id="day1"></div>
+            <div class="day-circle" id="day2"></div>
+            <div class="day-circle" id="day3"></div>
+            <div class="day-circle" id="day4"></div>
+            <div class="day-circle" id="day5"></div>
+            <div class="day-circle" id="day6"></div>
+            <div class="day-circle" id="day7"></div>
+          </div>
+          <!-- Add this button where you want it in the body of your HTML -->
+          <!-- <button id="loginButton" onclick="handleDailyLogin()" disabled>Log In Today</button> -->
+          <div id="couponDisplay" class="coupon-display"></div>
+        </section>
+        <div class="Log-Out-button">
+          <button id="Logoutbutton" onclick="handleLogout()">Log Out</button>
+        </div>
+        <script src="Pscript.js"></script>
         <script src="script.js"></script>
       </body>
 </html>
