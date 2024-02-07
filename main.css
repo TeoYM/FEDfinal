@@ -395,6 +395,7 @@ a{
   }
   .index-container {
     width: 90%;
+    height: auto;
     padding: 20px;
     margin: 0; /* Set margin to 0 for mobile view */
     display: flex;
@@ -770,4 +771,52 @@ body, header {
 .cart-container {
     flex: 1;
     padding: 20px;
+}
+.newsletter {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the newsletter heading */
+.newsletter h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Style for the newsletter paragraph */
+.newsletter p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+/* Style for the newsletter form */
+.newsletter form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newsletter input[type="email"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: 250px;
+}
+
+.newsletter button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.newsletter button:hover {
+  background-color: #0056b3;
 }
