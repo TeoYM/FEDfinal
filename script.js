@@ -269,3 +269,4 @@ dots.forEach((dot, idx) => {
 //         })
 //         .catch(error => console.error('Error:', error));
 
+//localStorage.removeItem('authenticatedUser');

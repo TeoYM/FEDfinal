@@ -78,28 +78,29 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // Function to check for a successful login streak
 // Function to check for a successful login streak and reset if needed
-    function isSuccessfulLoginStreak(user, currentDate) {
-        const lastLoginDate = new Date(user.lastLoginDate);
-        const currentDateTime = new Date(currentDate).getTime();
-        const lastLoginDateTime = lastLoginDate.getTime();
-  
-    // Check if the difference in milliseconds is less than or equal to a week (7 days)
-        const isStreakWithinWeek = currentDateTime - lastLoginDateTime <= 7 * 24 * 60 * 60 * 1000;
-    
-        // If streak is not within a week, reset the streak
-        if (!isStreakWithinWeek) {
-        user.loginStreak = 1; // Reset the streak counter
-        } else {
-        user.loginStreak = (user.loginStreak || 0) + 1; // Increment the streak counter
-        }
-    
-        // Update the last login date
-        user.lastLoginDate = currentDate;
-        localStorage.setItem('authenticatedUser', JSON.stringify(user));
-  
-    // Check if the streak is successful (adjust the threshold as needed)
-    return user.loginStreak >= 7; // Considered successful after 7 consecutive logins
+function isSuccessfulLoginStreak(user, currentDate) {
+  const lastLoginDate = new Date(user.lastLoginDate);
+  const currentDateTime = new Date(currentDate).getTime();
+  const lastLoginDateTime = lastLoginDate.getTime();
+
+  // Check if the difference in milliseconds is less than or equal to a day (24 hours)
+  const isStreakWithinDay = currentDateTime - lastLoginDateTime <= 24 * 60 * 60 * 1000;
+
+  // If streak is not within a day, reset the streak
+  if (!isStreakWithinDay) {
+      user.loginStreak = 1; // Reset the streak counter
+  } else {
+      user.loginStreak = (user.loginStreak || 0) + 1; // Increment the streak counter
   }
+
+  // Update the last login date
+  user.lastLoginDate = currentDate;
+  localStorage.setItem('authenticatedUser', JSON.stringify(user));
+
+  // Check if the streak is successful (adjust the threshold as needed)
+  return user.loginStreak >= 7; // Considered successful after 7 consecutive logins
+}
+
   
   
     // Function to generate a random coupon code
