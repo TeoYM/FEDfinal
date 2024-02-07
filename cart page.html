@@ -51,19 +51,19 @@
                 <form id="Checkout" onsubmit="return showSecondForm()">
                     <div class="mb-3">
                         <label for="Name" class="form-label">Enter your name</label>
-                        <input type="text" class="form-control" id="Name" placeholder="Enter your name">
+                        <input type="text" class="form-control" id="Name" placeholder="Enter your name" required>
                     </div>
                     <div class="mb-3">
                         <label for="postal-code" class="form-label">Postal Code</label>
-                        <input type="text" class="form-control" id="postal-code" placeholder="Enter postal code">
+                        <input type="number" class="form-control" id="postal-code" placeholder="Enter postal code" required>
                     </div>
                     <div class="mb-3">
                         <label for="street" class="form-label">Street</label>
-                        <input type="text" class="form-control" id="street" placeholder="Enter street name">
+                        <input type="text" class="form-control" id="street" placeholder="Enter street name"requried>
                     </div>
                     <div class="mb-3">
                         <label for="unit-number" class="form-label">Unit Number</label>
-                        <input type="text" class="form-control" id="unit-number" placeholder="Enter unit number">
+                        <input type="text" class="form-control" id="unit-number" placeholder="Enter unit number"required>
                     </div>
                     <div id="Address" class="d-grid gap-2 col-12 mx-auto">
                         <button type="submit" class="btn btn-primary">Confirm address</button>
@@ -75,19 +75,23 @@
                 <form id="Payment" onsubmit = "makePayment();return false;">
                     <div class="mb-3">
                         <label for="cardnumber" class="form-label">Credit Card Number</label>
-                        <input type="text" class="form-control" id="cardnumber" placeholder="xxxx-xxxx-xxxx-xxxx">
+                        <input type="number" class="form-control" id="cardnumber" placeholder="xxxx-xxxx-xxxx-xxxx" required>
                     </div>
                     <div class="mb-3">
                         <label for="cvv" class="form-label">CVV</label>
-                        <input type="text" class="form-control" id="cvv" placeholder="Enter your CVV">
+                        <input type="number" class="form-control" id="cvv" placeholder="Enter your CVV" requried>
                     </div>
                     <div class="mb-3">
                         <label for="expiration" class="form-label">Expiration Date</label>
-                        <input type="text" class="form-control" id="expiration" placeholder="MM/YY">
+                        <input type="month" class="form-control" id="expiration" placeholder="MM/YY" required>
                     </div>
                     <div class="mb-3">
                         <label for="nameOnCard" class="form-label">Name on Card</label>
-                        <input type="text" class="form-control" id="nameOnCard" placeholder="John Doe">
+                        <input type="text" class="form-control" id="nameOnCard" placeholder="John Doe" requried>
+                    </div>
+                    <div class = "mb-3">
+                        <label for="Discountcode" class="form-label">Do you have a discount card</label>
+                        <input type = "text" class = "form-control" id = "Discountcode" placeholder="Discount code">
                     </div>
                     <div id="total" class="mb-3">Total: $<span id="cart-total">0.00</span></div>
                     <!-- Add this line inside the Checkout form -->
@@ -101,74 +105,6 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
-    <script>
-        // Retrieve cart items from local storage
-        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartContainer = document.getElementById('cart-items');
-        const cartTotalElement = document.getElementById('cart-total');
-
-        // Function to render cart items on the page
-        function renderCartItems() {
-            cartContainer.innerHTML = '';
-            cartItems.forEach((item, index) => {
-                const cartItemElement = document.createElement('div');
-                cartItemElement.className = 'cart-item';
-                cartItemElement.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}" class="img-fluid">
-                    <h4 class="mt-3">Item Name: ${item.title}</h4>
-                    <p>Price: $${item.price}</p>
-                    <button class="btn btn-danger" onclick="removeFromCart(${index})">Remove</button>
-                `;
-                cartContainer.appendChild(cartItemElement);
-            });
-            updateTotal();
-        }
-
-        // Function to calculate and update the total
-        function updateTotal() {
-            const total = cartItems.reduce((acc, item) => acc + item.price, 0).toFixed(2);
-            cartTotalElement.textContent = total;
-            updatePoints();
-        }
-
-        function updatePoints() {
-            const points = Math.ceil(cartItems.reduce((acc, item) => acc + item.price, 0) * 0.05);
-            document.getElementById('cart-points').textContent = points;
-        }
-
-        // Function to remove an item from the cart
-        function removeFromCart(index) {
-            cartItems.splice(index, 1);
-            localStorage.setItem('cart', JSON.stringify(cartItems));
-            renderCartItems();
-        }
-
-        // Function to show the second form and hide the first form
-        function makePayment(){
-            const points = Math.ceil(cartItems.reduce((acc, item) => acc + item.price, 0) * 0.05);
-            localStorage.setItem('points',points)
-            cartItems = [];
-            // Update the local storage for the cart
-            localStorage.setItem('cart', JSON.stringify(cartItems));
-            alert('Payment successful!')
-            window.location.href = "profile.html";
-        }
-        function showSecondForm() {
-            // Validate form 1 data here if needed
-            // For now, let's assume the form is always valid
-
-            // Hide the first form
-            document.getElementById('form1').style.display = 'none';
-
-            // Show the second form
-            document.getElementById('form2').style.display = 'block';
-
-            // Return false to prevent form submission (since we are handling it with JavaScript)
-            return false;
-        }
-
-        // Initial rendering
-        renderCartItems();
-    </script>
+    <script src = "Cartscript.js"></script>
 </body>
 </html>

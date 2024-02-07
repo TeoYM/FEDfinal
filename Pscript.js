@@ -153,3 +153,29 @@ function updatePointsInProfile() {
 
 // Call the function to update points when the page loads
 updatePointsInProfile();
+
+// Add this function to your Pscript.js file
+function displayOrderedItems() {
+  const orderedItemsContainer = document.getElementById('orderedItemsContainer');
+  const orderedItems = JSON.parse(localStorage.getItem('OrderedItems')) || [];
+
+  if (orderedItems.length > 0) {
+      orderedItemsContainer.innerHTML = '';
+      orderedItems.forEach((item, index) => {
+          const orderedItemElement = document.createElement('div');
+          orderedItemElement.className = 'ordered-item';
+          orderedItemElement.innerHTML = `
+              <img src="${item.image}" alt="${item.name}" class="img-fluid">
+              <h4 class="mt-3">Item Name: ${item.title}</h4>
+              <p>Price: $${item.price}</p>
+          `;
+          orderedItemsContainer.appendChild(orderedItemElement);
+      });
+  } else {
+      orderedItemsContainer.innerHTML = '<p>No ordered items yet.</p>';
+  }
+}
+
+// Call this function to display ordered items when the page loads
+displayOrderedItems();
+
