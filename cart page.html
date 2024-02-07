@@ -17,19 +17,26 @@
                     <a href="index1.html" class="nav-link">Home</a>
                 </li>
             </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </nav>
     </header>
-    <div class="cart-container">
-        <h1>Your Shopping Cart</h1>
+    <div class= "Checkout">
         <div id="total">Total: $<span id="cart-total">0.00</span></div>
         <button id="checkout-btn" onclick="checkout()">Checkout</button>
+    </div>
+    <div class="cart-container">
+        <h1>Your Shopping Cart</h1>
         <div id="cart-items">
             <!-- Cart items will be displayed here -->
         </div>
         
         
     </div>
-    
+    <script src="script.js"></script>
     <script>
         // Retrieve cart items from local storage
         let cartItems = JSON.parse(localStorage.getItem('cart')) || [];

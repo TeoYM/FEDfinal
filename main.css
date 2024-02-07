@@ -517,7 +517,7 @@ body {
   justify-content: space-between;
 }
 .Pcard {
-  flex: 0 0 calc(25% - 20px); /* Adjusted width with margin */
+  flex: 0 0 calc(20% - 10px); /* Adjusted width with margin */
   margin-right: 20px; /* Margin on the right side */
   margin-bottom: 20px; /* Margin at the bottom */
   border: 2px solid black;
@@ -525,7 +525,8 @@ body {
   height: auto;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box; /* Add box-sizing to include padding and border in the width calculation */
+  box-sizing: border-box;
+  height: 450px; /* Add box-sizing to include padding and border in the width calculation */
 }
 
 .Pcard img {
@@ -589,6 +590,7 @@ body {
   border: 2px solid black;
   padding: 10px;
   margin-bottom: 10px;
+  max-width: 300px;
 }
 
 .cart-item img {
@@ -632,3 +634,34 @@ body {
   background-color: white; /* Change background color on hover */
   color: #0d6efd; /* Change text color on hover */
   }
+
+  #products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the rows horizontally */
+    align-items: center; /* Center the rows vertically */
+    margin: 0 auto; /* Center the container itself */
+  }
+.category-buttons{
+  display: flex;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  align-items: center;
+  justify-content: center;
+}
+.category-buttons button {
+  margin: 0 10px;
+  padding: 10px;
+  color: black;
+  background-color: white;
+  border-radius: 16px;
+  /* transition: background-color 0.3s ease; */
+}
+.category-buttons button:hover{
+  background-color: black;
+  color: white;
+}
+.category-buttons button.active-category {
+  background-color: black;
+  color: white;
+}
