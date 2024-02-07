@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let email = document.getElementById("email").value;
         let phonenumber = document.getElementById("phonenumber").value;
         let points = 0;
+        let tier = "Ordinary"
   
         let jsondata = {
             "Name": name,
@@ -29,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
             "Password": password,
             "Phonenumber": phonenumber,
             "Points": points,
+            "tier": tier,
         };
   
         let settings = {
@@ -135,14 +137,14 @@ document.addEventListener("DOMContentLoaded", function () {
           document.body.style.backgroundColor = 'white';
           // document.getElementById('lottieContainer').removeAttribute('hidden');
           document.getElementById('lottieContainer').removeAttribute('hidden');
-const lottiePlayer = document.createElement('dotlottie-player');
-lottiePlayer.setAttribute('src', 'https://lottie.host/fd5cc3a4-2683-4e6e-81c0-85f4c2ec16c2/cwV5WLalOi.json');
-lottiePlayer.setAttribute('background', 'white');
-lottiePlayer.setAttribute('speed', '1');
-lottiePlayer.setAttribute('style', 'width: 100vw; height: 100vh;');
-lottiePlayer.setAttribute('loop', '');
-lottiePlayer.setAttribute('autoplay', '');
-document.getElementById('lottieContainer').appendChild(lottiePlayer);
+          const lottiePlayer = document.createElement('dotlottie-player');
+          lottiePlayer.setAttribute('src', 'https://lottie.host/fd5cc3a4-2683-4e6e-81c0-85f4c2ec16c2/cwV5WLalOi.json');
+          lottiePlayer.setAttribute('background', 'white');
+          lottiePlayer.setAttribute('speed', '1');
+          lottiePlayer.setAttribute('style', 'width: 100vw; height: 100vh;');
+          lottiePlayer.setAttribute('loop', '');
+          lottiePlayer.setAttribute('autoplay', '');
+          document.getElementById('lottieContainer').appendChild(lottiePlayer);
 
           setTimeout(() => {
             localStorage.setItem('authenticatedUser', JSON.stringify(user));

@@ -14,23 +14,24 @@ document.addEventListener("DOMContentLoaded", function () {
         const tierDisplay = document.getElementById('tierDisplay');
   
         usernameDisplay.innerText = authenticatedUser.Username;
-        pointsDisplay.innerText = authenticatedUser.Points || 'N/A';
-  
-        const points = parseInt(authenticatedUser.Points) || 0;
-        let tier = '';
+        
+        const apiTier = authenticatedUser.TierFromAPI;
+        const apiPoints = authenticatedUser.PointsFromAPI;
+        const points = apiPoints !== undefined ? parseInt(apiPoints) : (parseInt(authenticatedUser.Points) || 0);
+        const tier = apiTier || authenticatedUser.Tier || 'Ordinary';
+    
+        pointsDisplay.innerText = points || '0';
+    
         let tierColor = '';
-  
+    
         if (points >= 200) {
-          tier = 'Gold';
           tierColor = 'gold';
         } else if (points >= 100) {
-          tier = 'Silver';
           tierColor = 'silver';
         } else {
-          tier = 'Ordinary';
           tierColor = 'white';
         }
-  
+    
         tierDisplay.innerText = tier;
         tierDisplay.style.color = tierColor;
   
@@ -60,9 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("User not authenticated");
     }
   
-    window.addEventListener("beforeunload", function () {
-      localStorage.removeItem('authenticatedUser');
-    });
+    // window.addEventListener("beforeunload", function () {
+    //   localStorage.removeItem('authenticatedUser');
+    // });
   
     // Function to update the weekly login progress circles
     function updateWeeklyProgress(currentDate) {
@@ -139,3 +140,16 @@ function handleLogout() {
   // Redirect to the login page or perform other actions as needed
   window.location.href = "Log in.html";
 }
+function updatePointsInProfile() {
+  const pointsDisplayElement = document.getElementById('pointsDisplay');
+  const storedPoints = localStorage.getItem('points');
+  
+  if (storedPoints) {
+      pointsDisplayElement.textContent = points + storedPoints;
+  } else {
+      pointsDisplayElement.textContent = 'N/A'; // Set a default value if no points are stored
+  }
+}
+
+// Call the function to update points when the page loads
+updatePointsInProfile();

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
 </head>
+
 <body>
     <header>
         <nav class="navbar">
@@ -36,18 +37,42 @@
     <div class="main-container">
         <div class="content-container">
             <div class="cart-container">
-                
+
                 <div id="cart-items">
                     <!-- Cart items will be displayed here -->
                 </div>
             </div>
         </div>
 
-        <!-- Checkout form -->
+        <!-- Checkout forms -->
         <div class="Cwrapper">
-            <div class="container mt-5">
+            <div class="container mt-5" id="form1">
                 <h2 class="mb-4 text-center">Checkout</h2>
-                <form id="Checkout">
+                <form id="Checkout" onsubmit="return showSecondForm()">
+                    <div class="mb-3">
+                        <label for="Name" class="form-label">Enter your name</label>
+                        <input type="text" class="form-control" id="Name" placeholder="Enter your name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="postal-code" class="form-label">Postal Code</label>
+                        <input type="text" class="form-control" id="postal-code" placeholder="Enter postal code">
+                    </div>
+                    <div class="mb-3">
+                        <label for="street" class="form-label">Street</label>
+                        <input type="text" class="form-control" id="street" placeholder="Enter street name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="unit-number" class="form-label">Unit Number</label>
+                        <input type="text" class="form-control" id="unit-number" placeholder="Enter unit number">
+                    </div>
+                    <div id="Address" class="d-grid gap-2 col-12 mx-auto">
+                        <button type="submit" class="btn btn-primary">Confirm address</button>
+                    </div>
+                </form>
+            </div>
+            <div class="container mt-5" id="form2" style="display: none;">
+                <h2 class="mb-4 text-center">Payment</h2>
+                <form id="Payment" onsubmit = "makePayment();return false;">
                     <div class="mb-3">
                         <label for="cardnumber" class="form-label">Credit Card Number</label>
                         <input type="text" class="form-control" id="cardnumber" placeholder="xxxx-xxxx-xxxx-xxxx">
@@ -65,6 +90,8 @@
                         <input type="text" class="form-control" id="nameOnCard" placeholder="John Doe">
                     </div>
                     <div id="total" class="mb-3">Total: $<span id="cart-total">0.00</span></div>
+                    <!-- Add this line inside the Checkout form -->
+                    <div id="points" class="mb-3">Points Earned: <span id="cart-points">0</span></div>
                     <div id="Payment" class="d-grid gap-2 col-12 mx-auto">
                         <button type="submit" class="btn btn-primary">Make Payment</button>
                     </div>
@@ -101,6 +128,12 @@
         function updateTotal() {
             const total = cartItems.reduce((acc, item) => acc + item.price, 0).toFixed(2);
             cartTotalElement.textContent = total;
+            updatePoints();
+        }
+
+        function updatePoints() {
+            const points = Math.ceil(cartItems.reduce((acc, item) => acc + item.price, 0) * 0.05);
+            document.getElementById('cart-points').textContent = points;
         }
 
         // Function to remove an item from the cart
@@ -110,9 +143,32 @@
             renderCartItems();
         }
 
+        // Function to show the second form and hide the first form
+        function makePayment(){
+            const points = Math.ceil(cartItems.reduce((acc, item) => acc + item.price, 0) * 0.05);
+            localStorage.setItem('points',points)
+            cartItems = [];
+            // Update the local storage for the cart
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            alert('Payment successful!')
+            window.location.href = "profile.html";
+        }
+        function showSecondForm() {
+            // Validate form 1 data here if needed
+            // For now, let's assume the form is always valid
+
+            // Hide the first form
+            document.getElementById('form1').style.display = 'none';
+
+            // Show the second form
+            document.getElementById('form2').style.display = 'block';
+
+            // Return false to prevent form submission (since we are handling it with JavaScript)
+            return false;
+        }
+
         // Initial rendering
         renderCartItems();
     </script>
 </body>
-
 </html>
