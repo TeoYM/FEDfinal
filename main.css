@@ -417,6 +417,7 @@ a{
   letter-spacing: 0.5px;
   padding: 0 10px;
   cursor: pointer;
+  font-family:Georgia, 'Times New Roman', Times, serif
 }
 *before{
   padding:0;
@@ -822,10 +823,10 @@ body, header {
   background-color: #0056b3;
 }
 .background-image {
-  position: relative;
-  width: 100%;
-  height: auto; /* Ensures image aspect ratio is maintained */
-  overflow: hidden; /* Hides any overflow content */
+  background-image: url('../FED/backgroud1.jpg'); /* Path to your image */
+  background-size: cover; /* This ensures the image covers the entire background */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
 }
 
 .background-image img {
