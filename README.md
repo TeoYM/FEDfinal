@@ -27,6 +27,7 @@ The design process focused on creating a seamless shopping experience for users 
 - Tier System: 1-49 Ordinary, 50-99 Silver, 99 and above: Gold
 - Discount Feature: 8 Character code will provide a $5 Discount. 
 - Referal System: Existing Users can refer a friend which will give new users 10Points as a sign up bonus. 10 Points = $10. 
+- After every purchase, points earn and redeemed will be updated to the database
 
 **Features Left to Implement:**
 - Product reviews and ratings: Allow users to share feedback and ratings for products they have purchased.
@@ -67,5 +68,7 @@ The design process focused on creating a seamless shopping experience for users 
 
 **GitHub Page Link:**
 - https://github.com/TeoYM/FEDfinal
+**Website Page**
+-https://teoym.github.io/FEDfinal/
 **Video Walkthrough Link:**
-- 
+- https://connectnpedu.sharepoint.com/:v:/s/FEDFinal/Ebspn6TnCQxBk4iiVYypRZUBJ9693ECjQNc_EDy1tN15hQ?e=arsB8o
