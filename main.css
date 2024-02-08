@@ -300,6 +300,7 @@ body {
   height: 100vh;
   margin: 0;
   background-color: white; /* Optional: Set background color */
+  font-family: Georgia, 'Times New Roman', Times, serif
 }
 .wrapper,
 .center-con {
@@ -650,7 +651,7 @@ body {
   margin-bottom: 50px;
   align-items: center;
   justify-content: center;
-  font-family:Georgia, 'Times New Roman', Times, serif
+  font-family: Georgia, 'Times New Roman', Times, serif
 }
 .category-buttons button {
   margin: 0 10px;
@@ -659,6 +660,7 @@ body {
   background-color: white;
   border-radius: 16px;
   /* transition: background-color 0.3s ease; */
+  font-family: Georgia, 'Times New Roman', Times, serif
 }
 .category-buttons button:hover{
   background-color: black;
@@ -904,4 +906,8 @@ footer {
   display: block;
   margin: 0 auto;
   max-width: 100%;
+}
+.footer-productpg{
+  margin-top: 30px;
+
 }
