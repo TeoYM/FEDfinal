@@ -26,11 +26,29 @@ function renderCartItems() {
 
 function updateTotal() {
     const total = cartItems.reduce((acc, item) => acc + item.price, 0);
+    const discountCode = document.getElementById('Discountcode').value;
+    const isDiscountCodeValid = isValidDiscountCode(discountCode);
+
+    let discount = 0;
+
+    // If the discount code is valid, apply the discount
+    if (isDiscountCodeValid) {
+        alert('Discount code applied! $5 off.');
+        discount = 5;
+    }
+
+    // Calculate the final price after applying the discount
+    const finalPrice = total - discount;
+
     cartTotalElement.textContent = total.toFixed(2);
+    document.getElementById('discount-amount').textContent = discount.toFixed(2);
+    document.getElementById('final-price').textContent = finalPrice.toFixed(2);
+
     // Update the points globally
-    pointsEarned = Math.round(total * 0.05);
+    pointsEarned = Math.round(finalPrice * 0.05);
     cartPointsElement.textContent = pointsEarned;
 }
+
 
 
 function removeFromCart(index) {
@@ -92,14 +110,20 @@ async function makePayment() {
             const password = authenticatedUser.Password;
             const Phonenumber = authenticatedUser.Phonenumber;
             const username = authenticatedUser.Username;
-            const tier = authenticatedUser.tier;
-            const userpoints = authenticatedUser.points
-            const currentpoints = Number(localStorage.getItem('points'));
+            let tier = authenticatedUser.tier;
+            const userpoints = authenticatedUser.Points
+            console.log(userpoints)
+            console.log(pointsEarned)
             const newPoints = userpoints + pointsEarned;
-            const dataToUpdate = {
-                Points: newPoints 
-            };
-            console.log('Data to update:', dataToUpdate);
+            console.log(newPoints)
+            if (newPoints >= 200) {
+                tier = 'Gold';
+              } else if (points >= 100) {
+                tier = 'Silver';
+              } else {
+                tier = 'Ordinary';
+              }
+              console.log(tier)
             fetch(`https://userdata-f68d.restdb.io/rest/contact-info/${UserId}`, {
                 method: 'PUT', // or 'PATCH' if your API supports it
                 headers: {
@@ -110,17 +134,18 @@ async function makePayment() {
                 },
                 body: JSON.stringify(
                     {
-                        Name : name,
-                        Username: username,
-                        EmailAddress:EmailAddress,
-                        password: password,
-                        Phonenumber:Phonenumber,
-                        Points: newPoints,
-                        tier:tier,
+                        "Name" : name,
+                        "Username" : username,
+                        "EmailAddress":EmailAddress,
+                        "Password": password,
+                        "Phonenumber":Phonenumber,
+                        "Points": newPoints,
+                        "tier":tier,
                     }
                 ),
             })
-            window.location.href = "index1.html";
+            console.log("success")
+            //window.location.href = "index1.html";
         } catch (error) {
             console.error('Error updating points in the database:', error);
             alert('Error during payment. Please try again later.');
@@ -164,3 +189,16 @@ function isValidDiscountCode(discountCode) {
     // Check if the discount code has exactly 8 characters
     return discountCode.length === 8;
 }
+function applyDiscount() {
+    const discountCodeInput = document.getElementById('applyDiscount');
+    const discountCode = discountCodeInput.value;
+    
+    if (isValidDiscountCode(discountCode)) {
+        alert('Discount code applied! $5 off.');
+        // You can update the UI or perform further actions here
+    } else {
+        alert('Invalid discount code. Please enter a valid code.');
+        // Optionally, you can clear the input field or take other actions
+    }
+}
+
