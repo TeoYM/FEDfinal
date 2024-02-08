@@ -17,10 +17,10 @@
             </a>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="index1.html" class="nav-link">Products</a>
+                    <a href="product page.html" class="nav-link">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a href="index1.html" class="nav-link">Cart</a>
+                    <a href="cart page.html" class="nav-link">Cart</a>
                 </li>
                 <li class="nav-item">
                     <a href="profile.html" class="nav-link">Profile</a>
@@ -89,19 +89,27 @@
                         <label for="nameOnCard" class="form-label">Name on Card</label>
                         <input type="text" class="form-control" id="nameOnCard" placeholder="John Doe" requried>
                     </div>
-                    <div class = "mb-3">
-                        <label for="Discountcode" class="form-label">Do you have a discount card</label>
-                        <input type = "text" class = "form-control" id = "Discountcode" placeholder="Discount code">
-                    </div>
                     <div class="mb-3">
-                        <label for="applyDiscount" class="form-label">Apply Discount Code</label>
-                        <input type="text" class="form-control" id="applyDiscount" placeholder="Enter discount code">
-                        <button class="btn btn-primary" onclick="applyDiscount()">Apply Discount</button>
+                        <label for="Discountcode" class="form-label">Do you have a discount code</label>
+                        <input type="text" class="form-control" id="Discountcode" placeholder="Discount code">
                     </div>
+                    <!-- Add a section for points redemption -->
+                    <!-- Add a section to display user points -->
+                    <div id="user-points" class="mb-3">Your Points: <span id="display-points">0</span></div>
+                    <div class="mb-3">
+                        <label for="redeemPoints" class="form-label">Redeem Points</label>
+                        <input type="number" class="form-control" id="redeemPoints" placeholder="Enter points to redeem">
+                        <!-- <button onclick="redeemPoints()">Redeem Points</button> -->
+                    </div>
+
+                    <button type="button" class="btn btn-primary" onclick="applyDiscount()">Apply Discount</button>                                        
                     <div id="total" class="mb-3">Total: $<span id="cart-total">0.00</span></div>
-                    <!-- Add this line inside the Checkout form -->
                     <div id="points" class="mb-3">Points Earned: <span id="cart-points">0</span></div>
-                    <!-- Add this line below the points section inside the Checkout form -->
+                    <div id="delivery-fee" class="mb-3">Delivery Fee: $<span id="cart-delivery-fee">3.00</span></div>
+                    <!-- Add this line below the discount section inside the Checkout form -->
+                    
+
+                    
                     <div id="discount-final" class="mb-3">Discount: $<span id="discount-amount">0.00</span> | Final Price: $<span id="final-price">0.00</span></div>
 
                     <div id="Payment" class="d-grid gap-2 col-12 mx-auto">

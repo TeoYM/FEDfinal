@@ -22,23 +22,30 @@ function renderCartItems() {
         cartContainer.appendChild(cartItemElement);
     });
     updateTotal();
+    const authenticatedUserString = localStorage.getItem('authenticatedUser');
+    const authenticatedUser = JSON.parse(authenticatedUserString);
+    const userpoints = authenticatedUser.Points
+    document.getElementById('display-points').textContent = userpoints;
+
+
 }
 
 function updateTotal() {
     const total = cartItems.reduce((acc, item) => acc + item.price, 0);
-    const discountCode = document.getElementById('Discountcode').value;
-    const isDiscountCodeValid = isValidDiscountCode(discountCode);
+    //const discountCode = document.getElementById('Discountcode').value;
+    //const isDiscountCodeValid = isValidDiscountCode(discountCode);
 
     let discount = 0;
 
     // If the discount code is valid, apply the discount
-    if (isDiscountCodeValid) {
-        alert('Discount code applied! $5 off.');
-        discount = 5;
-    }
+    // if (isDiscountCodeValid) {
+    //     alert('Discount code applied! $5 off.');
+    //     discount = 5;
+    // }
 
     // Calculate the final price after applying the discount
-    const finalPrice = total - discount;
+    const deliveryFee = 3
+    const finalPrice = total + deliveryFee - discount;
 
     cartTotalElement.textContent = total.toFixed(2);
     document.getElementById('discount-amount').textContent = discount.toFixed(2);
@@ -71,14 +78,16 @@ async function makePayment() {
     const isDiscountCodeValid = isValidDiscountCode(discountCode);
 
     // If the discount code is valid, apply the discount
-    if (isDiscountCodeValid) {
-        alert('Discount code applied! $5 off.');
-        total -= 5; // Apply a $5 discount
-    }
+    // if (isDiscountCodeValid) {
+    //     alert('Discount code applied! $5 off.');
+    //     total -= discount; // Apply a $5 discount
+    // }
     pointsEarned = Math.round(total * 0.05);
     const cardNumber = document.getElementById('cardnumber').value;
     localStorage.setItem('points',pointsEarned)
     const cvv = document.getElementById('cvv').value;
+    redeemPoints();
+
     if (!isValidCreditCard(cardNumber)) {
         alert('Please enter a valid 16-digit credit card number.');
         return;
@@ -103,6 +112,7 @@ async function makePayment() {
             alert('Payment successful!');
             const APIKEY = "65b11466a07ee8418b038306";
             const authenticatedUserString = localStorage.getItem('authenticatedUser');
+            const redeemPointsValue = localStorage.getItem('redeemedpoints');
             const authenticatedUser = JSON.parse(authenticatedUserString);
             const UserId = authenticatedUser._id;
             const name = authenticatedUser.Name;
@@ -114,11 +124,11 @@ async function makePayment() {
             const userpoints = authenticatedUser.Points
             console.log(userpoints)
             console.log(pointsEarned)
-            const newPoints = userpoints + pointsEarned;
+            const newPoints = userpoints + pointsEarned - redeemPointsValue;
             console.log(newPoints)
-            if (newPoints >= 200) {
+            if (newPoints >= 100) {
                 tier = 'Gold';
-              } else if (points >= 100) {
+              } else if (points >= 50) {
                 tier = 'Silver';
               } else {
                 tier = 'Ordinary';
@@ -144,6 +154,8 @@ async function makePayment() {
                     }
                 ),
             })
+            localStorage.setItem('authenticatedUser', JSON.stringify(authenticatedUser));
+
             console.log("success")
             //window.location.href = "index1.html";
         } catch (error) {
@@ -189,16 +201,78 @@ function isValidDiscountCode(discountCode) {
     // Check if the discount code has exactly 8 characters
     return discountCode.length === 8;
 }
+// Function to apply discount
 function applyDiscount() {
-    const discountCodeInput = document.getElementById('applyDiscount');
+    const discountCodeInput = document.getElementById('Discountcode');
     const discountCode = discountCodeInput.value;
-    
+    const total = cartItems.reduce((acc, item) => acc + item.price, 0);
+    const delivery = 3;
+
     if (isValidDiscountCode(discountCode)) {
         alert('Discount code applied! $5 off.');
-        // You can update the UI or perform further actions here
+        const discount = 5;
+        const discountedTotal = total - discount + delivery;
+
+        // Update the UI with the discounted total
+        cartTotalElement.textContent = discountedTotal.toFixed(2);
+        document.getElementById('discount-amount').textContent = discount.toFixed(2);
+        document.getElementById('final-price').textContent = discountedTotal.toFixed(2);
+
+        // Optionally, you can update the local storage or perform other actions
     } else {
         alert('Invalid discount code. Please enter a valid code.');
         // Optionally, you can clear the input field or take other actions
     }
 }
+
+function redeemPoints() {
+    const redeemPointsInput = document.getElementById('redeemPoints');
+    const redeemPointsValue = parseInt(redeemPointsInput.value, 10);
+
+    // Fetch user points and final price from local storage
+    const authenticatedUserString = localStorage.getItem('authenticatedUser');
+    const authenticatedUser = JSON.parse(authenticatedUserString);
+    let userPoints = authenticatedUser.Points;
+    let finalPrice = parseFloat(document.getElementById('final-price').textContent);
+    let discount = parseFloat(document.getElementById('discount-amount').textContent);
+
+    if (redeemPointsValue > 0 && redeemPointsValue <= userPoints) {
+        // Calculate the discount based on the redemption rate (e.g., 1 point = $1)
+        const redemptionRate = 1;
+
+        // Deduct the redeemed points from user points
+        userPoints -= redeemPointsValue;
+
+        // Calculate the discount based on redeemed points
+        const redeemedDiscount = redeemPointsValue * redemptionRate;
+
+        // Add the redeemed discount to the existing discount
+        discount += redeemedDiscount;
+
+        // Update the local storage with the new user points and redeemed points
+        localStorage.setItem('redeemedpoints', redeemPointsValue);
+
+        // Update the display element for user points
+        document.getElementById('display-points').textContent = userPoints;
+
+        // Update the UI with the new discount amount
+        document.getElementById('discount-amount').textContent = discount.toFixed(2);
+
+        // Update the final price by subtracting the total discount
+        finalPrice -= discount;
+
+        // Update the UI with the new final price
+        document.getElementById('final-price').textContent = finalPrice.toFixed(2);
+
+        // Optionally, you can send a request to update the user's points in the database
+        // ... (Add your database update logic here)
+
+        alert(`Successfully redeemed ${redeemPointsValue} points!`);
+    } else {
+        alert('Invalid points redemption amount. Please enter a valid value.');
+    }
+}
+
+
+
 
