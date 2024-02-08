@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 // Clear the form
                 signupForm.reset();
-                window.location.href = "Log in.html";
+                window.location.href = "index.html";
             })
             .catch(error => {
                 console.error('Error:', error);
