@@ -58,8 +58,15 @@
           <div id="orderedItemsContainer"></div>
         </section>
         <section>
-          <p style="text-align: center;">Refer a friend to get a $5 discount on your next order</p>
-        </section>
+          <h1 style="text-align: center;">Refer a Friend</h1>
+          <p style="text-align: center;">Share your referral code:</p>
+          <div id="referText" onmouseover="generateCode()" onmouseout="clearCode()" style="text-align: center; cursor: pointer;">
+              Click to reveal referral code
+          </div>
+          <div id="codeDisplay" style="text-align: center;"></div>
+      </section>
+      
+      
         <div class="Log-Out-button">
           <button id="Logoutbutton" onclick="handleLogout()">Log Out</button>
         </div>

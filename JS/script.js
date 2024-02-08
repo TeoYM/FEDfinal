@@ -7,8 +7,16 @@ document.addEventListener("DOMContentLoaded", function() {
     signupForm.addEventListener("submit", function(e) {
         e.preventDefault();
   
+        let additionalPoints = 0;
         let password = document.getElementById("password").value;
-        let passwordCheck = document.getElementById("password-check").value;
+        let passwordCheck = document.getElementById("password-check").value;        
+        let friendCode = document.getElementById("friendCode").value;
+
+        // Check if the friend code is valid (you may need to implement a proper validation logic)
+        if (friendCode.length === 8) {
+            // If valid, award 10 points
+            additionalPoints += 10;
+        }
 
         // Check if password and confirm password are the same
         if (password !== passwordCheck) {
@@ -29,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
             "EmailAddress": email,
             "Password": password,
             "Phonenumber": phonenumber,
-            "Points": points,
+            "Points": points + additionalPoints,
             "tier": tier,
         };
   

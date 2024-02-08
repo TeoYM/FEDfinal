@@ -178,4 +178,26 @@ function displayOrderedItems() {
 
 // Call this function to display ordered items when the page loads
 displayOrderedItems();
+function generateCode() {
+  const randomCode = generateRandomCode();
+  document.getElementById('codeDisplay').innerHTML = `Your referral code: ${randomCode}`;
+}
+
+function generateRandomCode() {
+  const length = 8;
+  const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let code = '';
+
+  for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      code += characters.charAt(randomIndex);
+  }
+
+  return code;
+}
+
+function clearCode() {
+  document.getElementById('codeDisplay').innerHTML = '';
+}
+
 
