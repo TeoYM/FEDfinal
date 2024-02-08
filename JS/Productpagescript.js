@@ -32,7 +32,7 @@ btn.classList.remove('active-category');
                 </a>
                 <div class="Pcard-body">
                     <h5 class="Pcard-title">
-                        <a href="product_details.html?title=${encodeURIComponent(product.title)}&description=${encodeURIComponent(product.description)}&price=${encodeURIComponent(product.price)}">${product.title}</a>
+                        <a href="product description.html?title=${encodeURIComponent(product.title)}&description=${encodeURIComponent(product.description)}&price=${encodeURIComponent(product.price)}&image=${encodeURIComponent(product.image)}">${product.title}</a>
                     </h5>
                     <p class="Pcard-text">Price: $${product.price}</p>
                     <button class="btn btn-primary" onclick="addToCart('${product.title}', ${product.price}, '${product.image}')" style="color: white; background-color: black; font-size: 17px;">Add to Cart</button>
