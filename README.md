@@ -55,5 +55,7 @@ The design process focused on creating a seamless shopping experience for users 
 - Product descriptions and information were sourced from reputable fashion brands and manufacturers.
 **Media:**
 - Product images were obtained from royalty-free stock photo websites and fashion brand catalogs.
+- API images fetched from: https://fakestoreapi.com
+- Logo Of shop obtained from Google.com
 **Acknowledgements:**
 - The project drew inspiration from popular e-commerce platforms and fashion blogs for design and functionality ideas.
