@@ -650,6 +650,7 @@ body {
   margin-bottom: 50px;
   align-items: center;
   justify-content: center;
+  font-family:Georgia, 'Times New Roman', Times, serif
 }
 .category-buttons button {
   margin: 0 10px;
