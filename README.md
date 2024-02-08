@@ -22,23 +22,27 @@ The design process focused on creating a seamless shopping experience for users 
 - User authentication: Allows users to create accounts, log in, and securely manage their personal information and order history.
 - Product browsing: Enables users to explore various clothing categories and view detailed product information.
 - Shopping cart: Allows users to add items to their cart, update quantities, and proceed to checkout.
-- Order management: Provides users with the ability to view past orders, track shipments, and manage returns.
 - Newsletter registration: Provides users with news and on going promotions thru email.
+- Points system: To encourage users to buy more to earn points for vouchers (Redemtion of points 1 point = $1) (Earning of points 5% of spending)
+- Tier System: 1-49 Ordinary, 50-99 Silver, 99 and above: Gold
+- Discount Feature: 8 Character code will provide a $5 Discount. 
+- Referal System: Existing Users can refer a friend which will give new users 10Points as a sign up bonus. 10 Points = $10. 
 
 **Features Left to Implement:**
 - Product reviews and ratings: Allow users to share feedback and ratings for products they have purchased.
 - Wishlist: Enable users to save items for later and easily access them for future purchases.
 - Social media integration: Allow users to share products on social media platforms and engage with the community.
-- More products for the shop to allow users to have a wider range of products to shop from
+- More products for the shop to allow users to have a wider range of products to shop from.
+- Product shipment tracking: Allow users to track their orders. 
 
 **Technologies Used:**
 - HTML5: Used for structuring the website's content.
 - CSS3: Used for styling and layout design.
 - JavaScript: Used for interactive features and client-side validation.
 - Bootstrap: Used for responsive design and grid layout.
-- Node.js: Used for backend development and server-side logic.
-- Express.js: Used for building the RESTful API.
-- MongoDB: Used as the database to store user information and product data.
+- API: https://fakestoreapi.com
+- Figma 
+- AdobeXD
 
 **Testing:**
 - Manual testing was performed to ensure proper functionality across different browsers and screen sizes.
@@ -59,3 +63,9 @@ The design process focused on creating a seamless shopping experience for users 
 - Logo Of shop obtained from Google.com
 **Acknowledgements:**
 - The project drew inspiration from popular e-commerce platforms and fashion blogs for design and functionality ideas.
+
+
+**GitHub Page Link:**
+- https://github.com/TeoYM/FEDfinal
+**Video Walkthrough Link:**
+- 

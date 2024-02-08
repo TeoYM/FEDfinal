@@ -1,0 +1,93 @@
+<!-- product_details.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="../main.css" type="text/css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="../HTML/index1.html">
+            <img class = "logo" src = "../FED/logo1.png" alt = "Logo">
+          </a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                  <a href="../HTML/cart page.html" class="nav-link">Cart</a>
+              </li> 
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+      </header>
+      <h2 style = "margin: 0px 100px; margin-top: 50px; margin-bottom: 100px; text-decoration: underline;">Product Description</h2>
+<!-- Inside the productdescriptioncontainer div -->
+<div id="product-image-container-1">
+    <img id="product-image" alt="Product Image" width="250" height="250">
+</div>
+<div id="product-details-container">
+    <h2 id="product-title"></h2>
+    <p id="description-label">Description:</p>
+    <p id="product-description"></p>
+    <p id = "product-rating"></p>
+    <p id="product-price"></p>
+    <button class="btn-1 btn-outline-dark flex-shrink-0" onclick="addToCart()" type="button" style="font-size: 1.2rem; padding: 0.75rem 1.5rem; background-color: transparent; color: #343a40; border-color: #343a40;" onmouseover="this.style.backgroundColor='#007BFF'; this.style.color='white'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#343a40';">
+        <i class="bi-cart-fill me-1"></i>
+        Add to cart
+    </button>
+</div>
+<footer class = "footer-productpg">
+    <p>&copy; 2024 Visvim. All rights reserved.</p>
+</footer>
+    <script src="../JS/script.js"></script>
+    <script>
+        // Fetch product details from the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const title = urlParams.get('title');
+        const description = urlParams.get('description');
+        const price = urlParams.get('price');
+        const image = urlParams.get('image');
+        const rating = urlParams.get('rating')
+
+        const ratingObject = JSON.parse(rating);
+
+
+
+        // Update the content on the page
+        document.getElementById('product-image').src = image;
+        document.getElementById('product-title').innerText = 'Item Name: '+ title;
+        document.getElementById('description-label').innerText = 'Description:';
+        document.getElementById('product-description').innerText = description;
+        document.getElementById('product-price').innerText = `Price: $${price}`;
+        
+        const ratingElement = document.getElementById('product-rating');
+        ratingElement.innerText = `Rating: ${ratingObject.rate} (${ratingObject.count} reviews)`;
+
+        function addToCart() {
+            // Create or retrieve cart from local storage
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Add product to cart
+            var product = {
+                title: title,
+                price: parseFloat(price),  // Convert price to float if it's stored as a string
+                image: image,
+                
+            };
+            cart.push(product);
+
+            // Save updated cart to local storage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Display a message (you can customize this part)
+            alert('Product added to cart!');
+        }
+    </script>
+
+</body>
+</html>
