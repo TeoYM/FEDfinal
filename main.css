@@ -543,7 +543,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* Center content horizontally */
-  font-size: 18px;
+  font-size: 17px;
 }
 .Pcard footer{
   margin-top: auto;
