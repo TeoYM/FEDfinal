@@ -1,3 +1,4 @@
+<!-- product_details.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +41,9 @@
         Add to cart
     </button>
 </div>
-
+<footer>
+    <p>&copy; 2024 Visvim. All rights reserved.</p>
+</footer>
     <script src="../JS/script.js"></script>
     <script>
         // Fetch product details from the URL parameters
@@ -61,7 +64,7 @@
         document.getElementById('description-label').innerText = 'Description:';
         document.getElementById('product-description').innerText = description;
         document.getElementById('product-price').innerText = `Price: $${price}`;
-
+        
         const ratingElement = document.getElementById('product-rating');
         ratingElement.innerText = `Rating: ${ratingObject.rate} (${ratingObject.count} reviews)`;
 
@@ -74,7 +77,7 @@
                 title: title,
                 price: parseFloat(price),  // Convert price to float if it's stored as a string
                 image: image,
-
+                
             };
             cart.push(product);
 
