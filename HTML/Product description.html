@@ -5,26 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details</title>
-    <link rel="stylesheet" href="main.css" type="text/css">
+    <link rel="stylesheet" href="../main.css" type="text/css">
 </head>
 <body>
     <header>
         <nav class="navbar">
-          <a href = "index1.html">
-            <img class = "logo" src = "FED/logo1.png" alt = "Logo">
+            <a href="../HTML/index1.html">
+            <img class = "logo" src = "../FED/logo1.png" alt = "Logo">
           </a>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Men</a>
-                </li> 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Women</a>
-                </li> 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Kids</a>
-                </li> 
-                <li class="nav-item">
-                  <a href="cart page.html" class="nav-link">Cart</a>
+                  <a href="../HTML/cart page.html" class="nav-link">Cart</a>
               </li> 
             </ul>
             <div class="hamburger">
@@ -43,6 +34,7 @@
     <h2 id="product-title"></h2>
     <p id="description-label">Description:</p>
     <p id="product-description"></p>
+    <p id = "product-rating"></p>
     <p id="product-price"></p>
     <button class="btn-1 btn-outline-dark flex-shrink-0" onclick="addToCart()" type="button" style="font-size: 1.2rem; padding: 0.75rem 1.5rem; background-color: transparent; color: #343a40; border-color: #343a40;" onmouseover="this.style.backgroundColor='#007BFF'; this.style.color='white'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#343a40';">
         <i class="bi-cart-fill me-1"></i>
@@ -50,7 +42,7 @@
     </button>
 </div>
 
-    <script src="script.js"></script>
+    <script src="../JS/script.js"></script>
     <script>
         // Fetch product details from the URL parameters
         const urlParams = new URLSearchParams(window.location.search);
@@ -58,6 +50,11 @@
         const description = urlParams.get('description');
         const price = urlParams.get('price');
         const image = urlParams.get('image');
+        const rating = urlParams.get('rating')
+
+        const ratingObject = JSON.parse(rating);
+
+
 
         // Update the content on the page
         document.getElementById('product-image').src = image;
@@ -65,6 +62,9 @@
         document.getElementById('description-label').innerText = 'Description:';
         document.getElementById('product-description').innerText = description;
         document.getElementById('product-price').innerText = `Price: $${price}`;
+        
+        const ratingElement = document.getElementById('product-rating');
+        ratingElement.innerText = `Rating: ${ratingObject.rate} (${ratingObject.count} reviews)`;
 
         function addToCart() {
             // Create or retrieve cart from local storage
@@ -74,7 +74,8 @@
             var product = {
                 title: title,
                 price: parseFloat(price),  // Convert price to float if it's stored as a string
-                image: image
+                image: image,
+                
             };
             cart.push(product);
 

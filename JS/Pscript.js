@@ -136,9 +136,9 @@ function handleLogout() {
   
   // Additional actions for logout can be added here
   console.log("User logged out successfully.");
-
+  localStorage.clear();
   // Redirect to the login page or perform other actions as needed
-  window.location.href = "Log in.html";
+  window.location.href = "index.html";
 }
 function updatePointsInProfile() {
   const pointsDisplayElement = document.getElementById('pointsDisplay');

@@ -59,6 +59,7 @@ async function makePayment() {
     }
     pointsEarned = Math.round(total * 0.05);
     const cardNumber = document.getElementById('cardnumber').value;
+    localStorage.setItem('points',pointsEarned)
     const cvv = document.getElementById('cvv').value;
     if (!isValidCreditCard(cardNumber)) {
         alert('Please enter a valid 16-digit credit card number.');
@@ -83,14 +84,23 @@ async function makePayment() {
             // Alert and redirect
             alert('Payment successful!');
             const APIKEY = "65b11466a07ee8418b038306";
-            const userId = localStorage.getItem('userId');
-            const currentpoints = Number(localStorage.getItem('Points'));
-            const newPoints = currentpoints + pointsEarned;
+            const authenticatedUserString = localStorage.getItem('authenticatedUser');
+            const authenticatedUser = JSON.parse(authenticatedUserString);
+            const UserId = authenticatedUser._id;
+            const name = authenticatedUser.Name;
+            const EmailAddress = authenticatedUser.EmailAddress;
+            const password = authenticatedUser.Password;
+            const Phonenumber = authenticatedUser.Phonenumber;
+            const username = authenticatedUser.Username;
+            const tier = authenticatedUser.tier;
+            const userpoints = authenticatedUser.points
+            const currentpoints = Number(localStorage.getItem('points'));
+            const newPoints = userpoints + pointsEarned;
             const dataToUpdate = {
                 Points: newPoints 
-            }; 
+            };
             console.log('Data to update:', dataToUpdate);
-            fetch(`https://userdata-f68d.restdb.io/rest/contact-info/${userId}`, {
+            fetch(`https://userdata-f68d.restdb.io/rest/contact-info/${UserId}`, {
                 method: 'PUT', // or 'PATCH' if your API supports it
                 headers: {
                     "Content-Type": "application/json",
@@ -100,7 +110,13 @@ async function makePayment() {
                 },
                 body: JSON.stringify(
                     {
-                        Points: Number(currentpoints + pointsEarned)
+                        Name : name,
+                        Username: username,
+                        EmailAddress:EmailAddress,
+                        password: password,
+                        Phonenumber:Phonenumber,
+                        Points: newPoints,
+                        tier:tier,
                     }
                 ),
             })

@@ -821,3 +821,13 @@ body, header {
 .newsletter button:hover {
   background-color: #0056b3;
 }
+/* background image */
+.background-image {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+}
+.background-image img{
+  width: 100vw;
+  height: 100vh;
+}
