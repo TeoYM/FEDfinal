@@ -59,3 +59,9 @@ The design process focused on creating a seamless shopping experience for users 
 - Logo Of shop obtained from Google.com
 **Acknowledgements:**
 - The project drew inspiration from popular e-commerce platforms and fashion blogs for design and functionality ideas.
+
+
+**GitHub Page Link:**
+- https://github.com/TeoYM/FEDfinal
+**Video Walkthrough Link:**
+- 
