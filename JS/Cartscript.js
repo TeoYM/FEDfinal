@@ -121,7 +121,9 @@ async function makePayment() {
             const Phonenumber = authenticatedUser.Phonenumber;
             const username = authenticatedUser.Username;
             let tier = authenticatedUser.tier;
-            const userpoints = authenticatedUser.Points
+            const userpoints = authenticatedUser.Points;
+            const dailylogin = authenticatedUser.dailylogin;
+            const lastlogin = authenticatedUser.lastlogin;
             console.log(userpoints)
             console.log(pointsEarned)
             const newPoints = userpoints + pointsEarned - redeemPointsValue;
@@ -151,13 +153,18 @@ async function makePayment() {
                         "Phonenumber":Phonenumber,
                         "Points": newPoints,
                         "tier":tier,
+                        "dailylogin":dailylogin,
+                        "lastlogin":lastlogin,
                     }
                 ),
             })
             localStorage.setItem('authenticatedUser', JSON.stringify(authenticatedUser));
 
             console.log("success")
-            //window.location.href = "index1.html";
+            alert('Payment successful! Redirecting to index1.html in 3 seconds...');
+            setTimeout(function() {
+                window.location.href = "index1.html";
+            }, 3000);
         } catch (error) {
             console.error('Error updating points in the database:', error);
             alert('Error during payment. Please try again later.');

@@ -40,6 +40,7 @@
         <section>
           <!-- Add this inside the <body> tag, after the existing content -->
             <h1 style="text-align: center;">Daily Log In</h1>
+            <p style = "text-align: center;">log in for 7 days to get a $5 discount</p>
             <div class="weekly-progress">
             <div class="day-circle" id="day1"></div>
             <div class="day-circle" id="day2"></div>
@@ -50,7 +51,9 @@
             <div class="day-circle" id="day7"></div>
           </div>
           <!-- Add this button where you want it in the body of your HTML -->
-          <!-- <button id="loginButton" onclick="handleDailyLogin()" disabled>Log In Today</button> -->
+          <div class ="loginbutton">
+            <button id="loginButton" onclick="handleDailyLogin()">Log In Today</button>
+          </div>
           <div id="couponDisplay" class="coupon-display"></div>
         </section>
         <section>

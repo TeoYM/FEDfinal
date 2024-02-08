@@ -30,6 +30,8 @@ document.addEventListener("DOMContentLoaded", function() {
         let phonenumber = document.getElementById("phonenumber").value;
         let points = 0;
         let tier = "Ordinary"
+        let dailylogin = 1;
+        let lastlogin = new Date();
   
         let jsondata = {
             "Name": name,
@@ -39,6 +41,8 @@ document.addEventListener("DOMContentLoaded", function() {
             "Phonenumber": phonenumber,
             "Points": points + additionalPoints,
             "tier": tier,
+            "dailylogin": dailylogin,
+            "lastlogin": lastlogin
         };
   
         let settings = {
