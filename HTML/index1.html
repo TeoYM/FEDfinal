@@ -66,7 +66,6 @@
                     const product = products[i];
                     const productElement = document.createElement('div');
                     productElement.className = 'index-box';
-                    // Add an anchor element around the image linking to product_details.html
                     productElement.innerHTML = `
                         <a href="product description.html?title=${encodeURIComponent(product.title)}&description=${encodeURIComponent(product.description)}&price=${encodeURIComponent(product.price)}&image=${encodeURIComponent(product.image)}">
                             <img src="${product.image}" alt="${product.title}" width="200" height="200">
@@ -84,7 +83,6 @@
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         const email = document.getElementById('email').value;
-        // You can perform additional validation or submission logic here
         
         // Display thank you popup
         popup.style.display = 'block';
@@ -92,10 +90,9 @@
         // Reset form after submission (optional)
         form.reset();
 
-        // You can hide the popup after a certain duration
         setTimeout(function() {
             popup.style.display = 'none';
-        }, 3000); // 3000 milliseconds = 3 seconds
+        }, 3000); 
     });
 });
 
