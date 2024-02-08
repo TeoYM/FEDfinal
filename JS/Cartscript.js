@@ -121,7 +121,9 @@ async function makePayment() {
             const Phonenumber = authenticatedUser.Phonenumber;
             const username = authenticatedUser.Username;
             let tier = authenticatedUser.tier;
-            const userpoints = authenticatedUser.Points
+            const userpoints = authenticatedUser.Points;
+            const dailylogin = authenticatedUser.dailylogin;
+            const lastlogin = authenticatedUser.lastlogin;
             console.log(userpoints)
             console.log(pointsEarned)
             const newPoints = userpoints + pointsEarned - redeemPointsValue;
@@ -151,6 +153,8 @@ async function makePayment() {
                         "Phonenumber":Phonenumber,
                         "Points": newPoints,
                         "tier":tier,
+                        "dailylogin":dailylogin,
+                        "lastlogin":lastlogin,
                     }
                 ),
             })

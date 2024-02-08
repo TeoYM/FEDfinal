@@ -190,12 +190,47 @@ function handleDailyLogin() {
     }
 
     const authenticatedUser = JSON.parse(authenticatedUserString);
+    const APIKEY = "65b11466a07ee8418b038306";
+    const UserId = authenticatedUser._id;
+    const name = authenticatedUser.Name;
+    const EmailAddress = authenticatedUser.EmailAddress;
+    const password = authenticatedUser.Password;
+    const Phonenumber = authenticatedUser.Phonenumber;
+    const username = authenticatedUser.Username;
+    const tier = authenticatedUser.tier;
+    const userpoints = authenticatedUser.Points;
+    const logincount = authenticatedUser.dailylogin;
+    let time = new Date();
+    fetch(`https://userdata-f68d.restdb.io/rest/contact-info/${UserId}`, {
+      method: 'PUT', // or 'PATCH' if your API supports it
+      headers: {
+          "Content-Type": "application/json",
+          "x-apikey": APIKEY,
+          "Cache-Control": "no-cache"
+          
+      },
+      body: JSON.stringify(
+          {
+              "Name" : name,
+              "Username" : username,
+              "EmailAddress":EmailAddress,
+              "Password": password,
+              "Phonenumber":Phonenumber,
+              "Points": userpoints,
+              "tier":tier,
+              "dailylogin":logincount,
+              "lastlogin": time
+              
+          }
+      ),
+  })
+  localStorage.setItem('authenticatedUser', JSON.stringify(authenticatedUser));
 
     // Check if required properties exist
-    if (!authenticatedUser || !authenticatedUser.Username || !authenticatedUser.Points || !authenticatedUser.tier) {
-      console.error("Invalid or incomplete user data in local storage.");
-      return;
-    }
+    // if (!authenticatedUser || !authenticatedUser.Username || !authenticatedUser.Points || !authenticatedUser.tier) {
+    //   console.error("Invalid or incomplete user data in local storage.");
+    //   return;
+    // }
 
     // Check if the user has already logged in today
     const today = new Date().toISOString().split('T')[0];
@@ -217,6 +252,7 @@ function handleDailyLogin() {
     displayDailyLoginProgress();
 
     console.log("User logged in today successfully.");
+    
 
   } catch (error) {
     console.error("An error occurred:", error);
