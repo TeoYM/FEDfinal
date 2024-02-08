@@ -34,7 +34,7 @@
         </nav>
     </header>
     <section class="background-image">
-        <img src="../FED/background1.jpg">
+        <img src="../FED/backgroud1.jpg">
         
     </section>
     <section>   
@@ -42,11 +42,14 @@
             <h2>Subscribe to Our Newsletter</h2>
             <p>Be the first to know about our latest products, special offers, and exclusive discounts!</p>
             <form id="newsletter-form">
-                <input type="email" name="email" placeholder="Your email address" required>
+                <input type="email" name="email" id="email" placeholder="Your email address" required>
                 <button type="submit">Subscribe</button>
             </form>
         </div>
-    </section>  
+    </section>
+    <div id="thank-you-popup" class="popup">
+        <p>Thank you for subscribing!</p>
+    </div>
     <section>
         <h1 style="text-align: center;">New Items</h1>
         <div id="products-container" class="index-container"></div>
@@ -63,7 +66,6 @@
                     const product = products[i];
                     const productElement = document.createElement('div');
                     productElement.className = 'index-box';
-                    // Add an anchor element around the image linking to product_details.html
                     productElement.innerHTML = `
                         <a href="product description.html?title=${encodeURIComponent(product.title)}&description=${encodeURIComponent(product.description)}&price=${encodeURIComponent(product.price)}&image=${encodeURIComponent(product.image)}">
                             <img src="${product.image}" alt="${product.title}" width="200" height="200">
@@ -73,6 +75,27 @@
                 }
             })
             .catch(error => console.error('Error:', error));
+
+            document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById('newsletter-form');
+    const popup = document.getElementById('thank-you-popup');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        
+        // Display thank you popup
+        popup.style.display = 'block';
+
+        // Reset form after submission (optional)
+        form.reset();
+
+        setTimeout(function() {
+            popup.style.display = 'none';
+        }, 3000); 
+    });
+});
+
     </script>
     <script src="../JS/script.js"></script>
 </body>

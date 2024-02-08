@@ -543,7 +543,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* Center content horizontally */
-  font-size: 18px;
+  font-size: 17px;
 }
 .Pcard footer{
   margin-top: auto;
@@ -821,13 +821,35 @@ body, header {
 .newsletter button:hover {
   background-color: #0056b3;
 }
-/* background image */
 .background-image {
-  background-color: white;
-  width: 100vw;
-  height: 100vh;
+  position: relative;
+  width: 100%;
+  height: auto; /* Ensures image aspect ratio is maintained */
+  overflow: hidden; /* Hides any overflow content */
 }
-.background-image img{
-  width: 100vw;
-  height: 100vh;
+
+.background-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 600px) {
+  .background-image img {
+      width: 100%; /* Adjust width for smaller screens */
+      height: auto; /* Ensures image aspect ratio is maintained */
+  }
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  z-index: 9999;
 }
