@@ -165,7 +165,7 @@ function displayOrderedItems() {
           const orderedItemElement = document.createElement('div');
           orderedItemElement.className = 'ordered-item';
           orderedItemElement.innerHTML = `
-              <img src="${item.image}" alt="${item.name}" class="img-fluid">
+              <img src="${item.image}" alt="${item.name}" class="img-fluid" width = "250" height = "250">
               <h4 class="mt-3">Item Name: ${item.title}</h4>
               <p>Price: $${item.price}</p>
           `;
