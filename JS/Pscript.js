@@ -56,7 +56,7 @@ function handleLogout() {
   // Additional actions for logout can be added here
   console.log("User logged out successfully.");
   localStorage.clear();
-  window.location.href = "index.html";
+  window.location.href = "../index.html";
 }
 
 function displayOrderedItems() {

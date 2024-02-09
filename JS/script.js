@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 // Clear the form
                 signupForm.reset();
-                window.location.href = "index.html";
+                window.location.href = "../index.html";
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
           setTimeout(() => {
             localStorage.setItem('authenticatedUser', JSON.stringify(user));
             //alert("Login success");
-            window.location.href = "index1.html";
+            window.location.href = "HTML/index1.html";
           }, 3000); // Wait for 3 seconds
         } else {
           alert("Invalid credentials");
